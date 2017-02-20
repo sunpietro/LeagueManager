@@ -1,0 +1,25 @@
+{
+    "name": "league-manager",
+    "version": "0.0.1",
+    "description": "League Manager is a web interface that allows managing leagues",
+    "main": "index.html",
+    "scripts": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sunpietro/LeagueManager.git"
+    },
+    "keywords": [
+        "league",
+        "manager",
+        "javascript",
+        "react",
+        "react-native",
+        "wordpress"
+    ],
+    "author": "Piotr Nalepa",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/sunpietro/LeagueManager/issues"
+    },
+    "homepage": "https://github.com/sunpietro/LeagueManager#readme"
+}

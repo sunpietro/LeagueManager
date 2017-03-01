@@ -1,0 +1,67 @@
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" width="300" height="300" id="piotr-nalepa-logo">
+  <style>
+    .bg {
+      fill: #b24210;
+      fill-rule: nonzero;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .letter-n {
+      fill: #ffffff;
+      fill-rule: evenodd;
+      stroke-width: 2px;
+    }
+    .letter-p {
+      fill: #ffffff;
+      fill-rule: evenodd;
+      stroke-width: 2px;
+    }
+    .letter-p-hole,
+    .letter-n-hole {
+      fill: #b24210;
+      fill-rule: evenodd;
+      stroke-width: 2px;
+    }
+    .star {
+      fill: #ffffff;
+      fill-rule: nonzero;
+      stroke-width: 2px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .star-hole {
+      fill: #b24210;
+      fill-rule: nonzero;
+      stroke-width: 2px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+  <g id="container-logo">
+    <rect width="300" height="300" x="0" y="0" class="bg"/>
+    <g id="container-letter-n">
+      <rect width="260" height="110" x="20" y="170" class="letter-n"/>
+      <rect width="220" height="90" x="40" y="190" class="letter-n-hole"/>
+    </g>
+    <g id="container-letter-p">
+      <path d="M 150 170 L 150 20 L 280 20 L 280 100 L 170 100 L 170 170 L 150 170 z" class="letter-p"/>
+      <rect width="90" height="40" x="170" y="40" class="letter-p-hole"/>
+    </g>
+    <g id="container-star">
+      <path d="
+        M 67.553 95.000
+        L 96.942 110.451
+        L 91.329 77.725
+        L 115.106 54.549
+        L 82.248 49.775
+        L 67.553 20.000
+        L 52.858 49.775
+        L 20.000 54.549
+        L 43.777 77.725
+        L 38.164 110.451
+        L 67.553 95.000 z
+      " class="star"/>
+      <circle cx="67.553" cy="70" r="20" class="star-hole" />
+    </g>
+  </g>
+</svg>

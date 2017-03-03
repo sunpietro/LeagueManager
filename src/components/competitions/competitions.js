@@ -2,27 +2,17 @@ import React, { Component } from 'react';
 import Header from '../page-elements/header';
 import Nav from '../page-elements/nav';
 import CompetitionListItem from './competition-list-item';
+import competitionsData from '../../sources/competitions';
 
 class Competitions extends Component {
     constructor() {
         super();
 
-        this.state = {
-            competitions: [{
-                id: 1,
-                name: 'HLZ'
-            }, {
-                id: 2,
-                name: 'SOSLiga'
-            }, {
-                id: 3,
-                name: 'RLB'
-            }]
-        };
+        this.state = competitionsData;
     }
 
     renderCompetition(hash, index) {
-        return <CompetitionListItem key={hash.id} id={hash.id} name={hash.name} />
+        return <CompetitionListItem key={hash.id} id={hash.id} name={hash.shortname} />
     }
 
     render() {

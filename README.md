@@ -8,4 +8,8 @@ I'm not going to use eZ Platform as I don't have any sufficient web server to ha
 
 ## DSP2017 Competition
 
-The app takes part in the DSP2017 competition. It would be great to win any prizes, but the greatest win will be finishing the app I have in mind for a long time and to write at least 2 blog posts on my blog: [http://blog.piotrnalepa.pl](http://blog.piotrnalepa.pl)
+The app takes part in the DSP2017 competition. It would be great to win any prizes, but the greatest win will be finishing the app I have in mind for a long time and to write at least 2 blog posts per week on my blog: [http://blog.piotrnalepa.pl](http://blog.piotrnalepa.pl)
+
+## TO DO List
+
+[List of things to do](../master/todo.md)

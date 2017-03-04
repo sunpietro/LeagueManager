@@ -25,6 +25,10 @@ class FormInput extends Component {
         return typeof this.props[key] !== 'undefined' ? this.props[key] : values[key];
     }
 
+    handleChange(event) {
+        this.setState({value: event.target.value});
+    }
+
     render() {
         let className = 'form-input';
 
@@ -52,7 +56,8 @@ class FormInput extends Component {
                     ref={this.props.id}
                     placeholder={this.props.placeholder}
                     disabled={this.state.disabled}
-                    required={this.state.required} />
+                    required={this.state.required}
+                    onChange={this.handleChange.bind(this)} />
             </div>
         );
     }

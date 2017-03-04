@@ -4,6 +4,7 @@ import Nav from '../page-elements/nav';
 import CompetitionListItem from './competition-list-item';
 import CompetitionForm from '../forms/competition-form';
 import competitionsData from '../../sources/competitions';
+import Firebase from '../../tools/firebase';
 
 import '../../css/components/competitions/competitions.css';
 
@@ -12,6 +13,12 @@ class Competitions extends Component {
         super();
 
         this.state = competitionsData;
+    }
+
+    componentWillMount() {
+        let competitionsRef = Firebase.database().ref('competitions').orderByKey();
+
+        competitionsRef.on('child_added', snapshot => console.log('comp:child_added', snapshot));
     }
 
     renderCompetition(hash, index) {

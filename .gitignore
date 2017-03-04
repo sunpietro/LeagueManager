@@ -9,6 +9,9 @@
 # production
 /build
 
+# sensitive data
+/src/tools/firebase.js
+
 # misc
 .DS_Store
 .env

@@ -11,7 +11,7 @@ import Players from './components/players';
 import Stats from './components/stats';
 import Config from './components/config';
 
-import './index.css';
+import './css/index.css';
 
 ReactDOM.render((
     <Router history={browserHistory}>

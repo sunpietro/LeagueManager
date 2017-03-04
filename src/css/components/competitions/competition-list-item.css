@@ -1,0 +1,7 @@
+.competition-list-item {
+    display: flex;
+}
+
+.competition-list-item__id {
+    flex: 0 0 1rem;
+}

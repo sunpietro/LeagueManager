@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Header from '../page-elements/header';
 import Nav from '../page-elements/nav';
 import seasonsData from '../../sources/seasons';
-import competitionsData from '../../sources/competitions';
 
 class Competitions extends Component {
     constructor() {

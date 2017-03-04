@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 
+import '../../css/components/competitions/competition-list-item.css';
+
 class CompetitionListItem extends Component {
     constructor() {
         super();
@@ -20,9 +22,9 @@ class CompetitionListItem extends Component {
         let id = this.props.id;
 
         return (
-            <div className="component component--competition-list-item" onClick={this.redirectToCompetition.bind(this)}>
-                <div className="competition-item__id">{id}</div>
-                <div className="competition-item__name">{this.props.name}</div>
+            <div className="competition-list-item" onClick={this.redirectToCompetition.bind(this)}>
+                <div className="competition-list-item__id">{id}</div>
+                <div className="competition-list-item__name">{this.props.name}</div>
             </div>
         );
     }

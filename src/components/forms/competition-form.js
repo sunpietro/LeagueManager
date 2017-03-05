@@ -14,12 +14,6 @@ class CompetitionForm extends Component {
         };
     }
 
-    componentWillMount() {
-        let competitionsRef = Firebase.database().ref('competitions').orderByKey();
-
-        competitionsRef.on('child_added', snapshot => console.log('form:child_added', snapshot));
-    }
-
     save(event) {
         event.preventDefault();
         console.log('save');
@@ -49,7 +43,7 @@ class CompetitionForm extends Component {
                 <h3 className="competition-form__title"></h3>
                 <form className="competition-form__fields">
                     <InputField ref="fullname" id="fullname" name="Full competition name" required="true" />
-                    <InputField ref="shortname" id="shortname" name="Short competition name" />
+                    <InputField ref="shortname" id="shortname" name="Short competition name" maxlength="4" />
                     <div className="competition-form__buttons">
                         <FormButton onclick={this.cancel.bind(this)} type="button" id="cancel" name="Cancel" />
                         <FormButton onclick={this.save.bind(this)} type="button" id="save" name="Save" />

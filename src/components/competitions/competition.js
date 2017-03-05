@@ -1,13 +1,34 @@
 import React, { Component } from 'react';
 import Header from '../page-elements/header';
 import Nav from '../page-elements/nav';
-import seasonsData from '../../sources/seasons';
+import Firebase from '../../tools/firebase';
 
 class Competitions extends Component {
     constructor() {
         super();
 
-        this.state = seasonsData;
+        this.state = {
+            shortname: '',
+            fullname: '',
+            seasons: []
+        };
+    }
+
+    componentWillMount() {
+        Firebase
+            .database()
+            .ref('competitions/' + this.props.routeParams.competitionId)
+            .once('value')
+            .then(this.updateCompetitionState.bind(this));
+    }
+
+    updateCompetitionState(snapshot) {
+        const values = snapshot.val();
+
+        this.setState({
+            shortname: values.shortname,
+            fullname: values.fullname
+        })
     }
 
     renderSeason(hash, index) {
@@ -15,9 +36,11 @@ class Competitions extends Component {
     }
 
     render() {
-        const subtitle = 'Competition - ' + this.props.name;
+        const subtitle = 'Competition - ' + this.state.fullname;
 
-        console.log(this.props);
+        if (!this.state.fullname.length) {
+            return <div className="component component--competition"></div>;
+        }
 
         return (
             <div className="component component--competition">

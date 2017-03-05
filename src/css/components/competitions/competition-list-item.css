@@ -3,5 +3,6 @@
 }
 
 .competition-list-item__id {
-    flex: 0 0 1rem;
+    flex: 0 0 2em;
+    margin-right: .5rem;
 }

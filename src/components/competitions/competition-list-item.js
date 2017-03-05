@@ -4,27 +4,17 @@ import { browserHistory } from 'react-router';
 import '../../css/components/competitions/competition-list-item.css';
 
 class CompetitionListItem extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            id: 0,
-            name: ''
-        };
-    }
-
     redirectToCompetition() {
-        browserHistory.push('/competition/' + this.props.id);
+        browserHistory.push('/competition/' + this.props.item.key);
     }
 
     render() {
-        console.log(this.state, this.props);
-        let id = this.props.id;
+        const item = this.props.item;
 
         return (
             <div className="competition-list-item" onClick={this.redirectToCompetition.bind(this)}>
-                <div className="competition-list-item__id">{id}</div>
-                <div className="competition-list-item__name">{this.props.name}</div>
+                <div className="competition-list-item__id">{item.data.shortname}</div>
+                <div className="competition-list-item__name">{item.data.fullname}</div>
             </div>
         );
     }

@@ -11,6 +11,7 @@
 
 # sensitive data
 /src/tools/firebase.js
+/src/tools/wpapi.js
 
 # misc
 .DS_Store

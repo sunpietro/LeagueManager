@@ -4,6 +4,7 @@ import Nav from '../page-elements/nav';
 import CompetitionListItem from './competition-list-item';
 import CompetitionForm from '../forms/competition-form';
 import Firebase from '../../tools/firebase';
+import WPAPI from '../../tools/wpapi';
 
 import '../../css/components/competitions/competitions.css';
 
@@ -14,6 +15,8 @@ class Competitions extends Component {
         this.state = {
             competitions: []
         };
+
+        console.log('posts', WPAPI.posts());
     }
 
     componentWillMount() {

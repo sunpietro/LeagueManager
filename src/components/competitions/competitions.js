@@ -16,7 +16,30 @@ class Competitions extends Component {
             competitions: []
         };
 
-        console.log('posts', WPAPI.posts());
+        // const promises = [
+        //     WPAPI.taxonomies().taxonomy('sp_league'),
+        //     WPAPI.taxonomies().taxonomy('sp_season'),
+        //     WPAPI.posts().type('sp_event'),
+        //     WPAPI.posts().type('sp_team'),
+        //     WPAPI.posts().type('sp_player'),
+        //     WPAPI.posts().type('sp_staff'),
+        // ];
+
+        // Promise.all(promises).then(function () {
+        //     console.log('all', arguments);
+        // })
+
+        // console.log('posts', WPAPI.posts().param('post_type', 'sp_league'));
+
+        // WPAPI.posts().then(function (result) {
+        // WPAPI.types().type('sp_player').then(function (result) {
+        WPAPI.players().then(function (result) {
+            console.log('result', result);
+        }).catch(function (error) {
+            console.log('error', error);
+        });
+
+        // WPAPI.taxonomies().taxonomy('sp_league')
     }
 
     componentWillMount() {
@@ -43,8 +66,6 @@ class Competitions extends Component {
     }
 
     render() {
-        console.log('competitions:render', this.state.competitions.length);
-
         return (
             <div className="component component--competitions">
                 <Header subtitle="Competitions" />

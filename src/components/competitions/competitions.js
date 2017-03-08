@@ -16,30 +16,17 @@ class Competitions extends Component {
             competitions: []
         };
 
-        // const promises = [
-        //     WPAPI.taxonomies().taxonomy('sp_league'),
-        //     WPAPI.taxonomies().taxonomy('sp_season'),
-        //     WPAPI.posts().type('sp_event'),
-        //     WPAPI.posts().type('sp_team'),
-        //     WPAPI.posts().type('sp_player'),
-        //     WPAPI.posts().type('sp_staff'),
-        // ];
+        console.log('wpapi', WPAPI);
 
-        // Promise.all(promises).then(function () {
-        //     console.log('all', arguments);
-        // })
-
-        // console.log('posts', WPAPI.posts().param('post_type', 'sp_league'));
-
-        // WPAPI.posts().then(function (result) {
-        // WPAPI.types().type('sp_player').then(function (result) {
-        WPAPI.players().then(function (result) {
-            console.log('result', result);
+        Promise.all([
+            WPAPI.taxonomies().taxonomy('sp_league').slug('sp_league'),
+            WPAPI.taxonomies().taxonomy('sp_season'),
+            WPAPI.player().id(59)
+        ]).then(function (result) {
+            console.log('result', result[0]);
         }).catch(function (error) {
             console.log('error', error);
         });
-
-        // WPAPI.taxonomies().taxonomy('sp_league')
     }
 
     componentWillMount() {

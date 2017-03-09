@@ -6,8 +6,8 @@ class Players extends Component {
     render() {
         return (
             <div className="component component--players">
-                <Header subtitle="Players" />
                 <Nav />
+                <Header subtitle="Players" />
             </div>
         );
     }

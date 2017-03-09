@@ -6,8 +6,8 @@ class Stats extends Component {
     render() {
         return (
             <div className="component component--stats">
-                <Header subtitle="Stats" />
                 <Nav />
+                <Header subtitle="Stats" />
             </div>
         );
     }

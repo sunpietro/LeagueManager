@@ -1,57 +1,69 @@
 import React, { Component } from 'react';
 import Header from '../page-elements/header';
 import Nav from '../page-elements/nav';
-import Firebase from '../../tools/firebase';
+import WPAPI from '../../tools/wpapi';
 
-class Competitions extends Component {
+class Competition extends Component {
     constructor() {
         super();
 
         this.state = {
-            shortname: '',
-            fullname: '',
-            seasons: []
+            id: 0,
+            name: '',
+            link: '',
+            slug: '',
+            parent: 0,
+            taxonomy: '',
+            description: '',
         };
     }
 
     componentWillMount() {
-        Firebase
-            .database()
-            .ref('competitions/' + this.props.routeParams.competitionId)
-            .once('value')
-            .then(this.updateCompetitionState.bind(this));
+        WPAPI.competition()
+            .id(parseInt(this.props.routeParams.competitionId, 10))
+            .then(this.updateCompetitionState.bind(this))
+            .catch(this.handleError);
     }
 
-    updateCompetitionState(snapshot) {
-        const values = snapshot.val();
+    updateCompetitionState(competition) {
+        console.log('updateCompetitionState', competition);
 
         this.setState({
-            shortname: values.shortname,
-            fullname: values.fullname
-        })
+            id: competition.id,
+            name: competition.name,
+            link: competition.link,
+            slug: competition.slug,
+            parent: competition.parent,
+            taxonomy: competition.taxonomy,
+            description: competition.description,
+        });
     }
 
     renderSeason(hash, index) {
         console.log('renderSeason', index, hash);
     }
 
-    render() {
-        const subtitle = 'Competition - ' + this.state.fullname;
+    handleError(error) {
+        console.log('competition:handleError', error);
+    }
 
-        if (!this.state.fullname.length) {
+    render() {
+        const subtitle = 'Competition - ' + this.state.name;
+
+        if (!this.state.name.length) {
             return <div className="component component--competition"></div>;
         }
 
         return (
             <div className="component component--competition">
-                <Header subtitle={subtitle} />
                 <Nav />
-                <div className="competitions__list">
-                {this.state.seasons.map(this.renderSeason)}
+                <Header subtitle={subtitle} />
+                <div className="component--competition__seasons">
+
                 </div>
             </div>
         );
     }
 }
 
-export default Competitions;
+export default Competition;

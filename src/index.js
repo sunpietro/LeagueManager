@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 
 import Home from './components/home';
-import Competitions from './components/competitions/competitions';
+import CompetitionsList from './components/competitions/competitions-list';
 import Competition from './components/competitions/competition';
 import Seasons from './components/seasons';
-import Matches from './components/matches';
+import GamesList from './components/games/games-list';
 import Players from './components/players';
 import Stats from './components/stats';
 import Config from './components/config';
@@ -16,11 +16,11 @@ import './css/index.css';
 ReactDOM.render((
     <Router history={browserHistory}>
         <Route path="/" component={Home} />
-        <Route path="/competitions" component={Competitions} />
-        <Route path="/competition/:competitionId" component={Competition} />
-        <Route path="/competition/:competitionId/season/:seasonId" component={Competitions} />
+        <Route path="/competitions" component={CompetitionsList} />
+        <Route path="/competition/:parentId/:competitionId" component={Competition} />
+        <Route path="/competition/:parentId/:competitionId/season/:seasonId" component={Competition} />
         <Route path="/seasons" component={Seasons} />
-        <Route path="/matches" component={Matches} />
+        <Route path="/games" component={GamesList} />
         <Route path="/players" component={Players} />
         <Route path="/stats" component={Stats} />
         <Route path="/config" component={Config} />

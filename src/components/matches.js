@@ -6,8 +6,8 @@ class Matches extends Component {
     render() {
         return (
             <div className="component component--matches">
-                <Header subtitle="Matches" />
                 <Nav />
+                <Header subtitle="Matches" />
             </div>
         );
     }

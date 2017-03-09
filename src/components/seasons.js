@@ -6,8 +6,8 @@ class Seasons extends Component {
     render() {
         return (
             <div className="component component--seasons">
-                <Header subtitle="Seasons" />
                 <Nav />
+                <Header subtitle="Seasons" />
             </div>
         );
     }

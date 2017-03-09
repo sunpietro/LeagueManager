@@ -6,8 +6,8 @@ class Home extends Component {
     render() {
         return (
             <div className="component component--home">
-                <Header subtitle="Home" />
                 <Nav />
+                <Header subtitle="Home" />
             </div>
         );
     }

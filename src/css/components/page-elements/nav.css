@@ -1,0 +1,10 @@
+.component--nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.component--nav__link + .component--nav__link {
+    margin-left: .5rem;
+}

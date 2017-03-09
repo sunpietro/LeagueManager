@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
+import Competition from './competition-list-subitem';
 
 import '../../css/components/competitions/competition-list-item.css';
 
 class CompetitionListItem extends Component {
-    redirectToCompetition() {
-        browserHistory.push('/competition/' + this.props.item.key);
+    renderCompetition(competition) {
+        return <Competition key={competition.key} item={competition} />
     }
 
     render() {
         const item = this.props.item;
 
+        console.log('competition:item', item);
+
         return (
-            <div className="competition-list-item" onClick={this.redirectToCompetition.bind(this)}>
-                <div className="competition-list-item__id">{item.data.shortname}</div>
-                <div className="competition-list-item__name">{item.data.fullname}</div>
+            <div className="component component--competition-list-item">
+                <h3 className="component--competition-list-item__title">{item.name}</h3>
+                <div className="component--competition-list-item__competitions">
+                    {item.competitions.map(this.renderCompetition)}
+                </div>
             </div>
         );
     }

@@ -12,6 +12,7 @@ class FormInput extends Component {
             required: this.initDefaultValue('required'),
             disabled: this.initDefaultValue('disabled'),
             maxlength: this.initDefaultValue('maxlength'),
+            focus: this.initDefaultValue('focus'),
         };
     }
 
@@ -21,6 +22,7 @@ class FormInput extends Component {
             hidden: false,
             required: false,
             disabled: false,
+            focus: false,
             maxlength: 128
         };
 
@@ -52,15 +54,16 @@ class FormInput extends Component {
                 <input
                     className="form-input__field"
                     type={this.props.type}
-                    defaultValue={this.state.value}
                     name={this.props.id}
                     id={this.props.id}
                     ref={this.props.id}
                     placeholder={this.props.placeholder}
+                    autoFocus={this.state.focus}
+                    defaultValue={this.state.value}
                     disabled={this.state.disabled}
                     required={this.state.required}
-                    onChange={this.handleChange.bind(this)}
-                    maxLength={this.state.maxlength} />
+                    maxLength={this.state.maxlength}
+                    onChange={this.handleChange.bind(this)} />
             </div>
         );
     }

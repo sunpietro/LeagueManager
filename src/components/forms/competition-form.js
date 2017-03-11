@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import InputField from '../form-elements/form-input';
 import FormButton from '../form-elements/form-button';
-import Firebase from '../../tools/firebase';
+import WPAPI from '../../tools/wpapi';
 
 import '../../css/components/competitions/competition-form.css';
 
@@ -16,19 +16,28 @@ class CompetitionForm extends Component {
 
     save(event) {
         event.preventDefault();
-        console.log('save');
 
-        Firebase.database().ref('competitions').push({
-            fullname: this.refs.fullname.state.value,
-            shortname: this.refs.shortname.state.value
-        });
+        const slug = this.createSlug(this.refs.name.state.value, this.refs.slug.state.value);
+
+        WPAPI.competition().create({
+            parent: 0,
+            name: this.refs.name.state.value,
+            slug: slug,
+        }).then(this.props.onSave).catch(this.props.onError);
 
         this.clearForm();
     }
 
+    createSlug(name, slug) {
+        if (slug.trim().length) {
+            return slug;
+        }
+
+        return name.normalize('NFKD').replace(/[\u0300-\u036F]/g, '');
+    }
+
     cancel(event) {
         event.preventDefault();
-        console.log('cancel', arguments);
 
         this.clearForm();
     }
@@ -42,8 +51,8 @@ class CompetitionForm extends Component {
             <div className="competition-form__wrapper" key={this.state.formKey}>
                 <h3 className="competition-form__title"></h3>
                 <form className="competition-form__fields">
-                    <InputField ref="fullname" id="fullname" name="Full competition name" required="true" />
-                    <InputField ref="shortname" id="shortname" name="Short competition name" maxlength="4" />
+                    <InputField ref="name" id="name" name="Competition name" required="true" focus="true"/>
+                    <InputField ref="slug" id="slug" name="Slug" />
                     <div className="competition-form__buttons">
                         <FormButton onclick={this.cancel.bind(this)} type="button" id="cancel" name="Cancel" />
                         <FormButton onclick={this.save.bind(this)} type="button" id="save" name="Save" />

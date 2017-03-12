@@ -11,8 +11,6 @@ class CompetitionListItem extends Component {
     render() {
         const item = this.props.item;
 
-        console.log('competition:item', item);
-
         return (
             <div className="component component--competition-list-item">
                 <h3 className="component--competition-list-item__title">{item.name}</h3>

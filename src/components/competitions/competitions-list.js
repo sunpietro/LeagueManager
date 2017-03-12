@@ -17,28 +17,15 @@ class CompetitionsList extends Component {
             groupedCompetitions: {},
             inProgress: true,
         };
-
-        // console.log('wpapi', WPAPI);
-
-        // Promise.all([
-        //     WPAPI.season(),
-        // ]).then(function (result) {
-        //     console.log('season', result[0]);
-        // }).catch(function (error) {
-        //     console.log('error', error);
-        // });
     }
 
     componentWillMount() {
-        // let competitionsRef = Firebase.database().ref('competitions').orderByKey();
-
-        // competitionsRef.on('child_added', this.updateCompetitionsList.bind(this));
-
         this.getCompetitionsList();
     }
 
     getCompetitionsList() {
         WPAPI.competition()
+            .perPage(100)
             .then(this.updateCompetitionsList.bind(this))
             .catch(this.handleError);
     }
@@ -60,6 +47,7 @@ class CompetitionsList extends Component {
 
         competitions.forEach(competition => {
             competition.key = `comp-${competition.parent}|${competition.id}`;
+
             if (!competition.parent) {
                 competition.competitions = [];
 
@@ -99,7 +87,7 @@ class CompetitionsList extends Component {
                 <Nav />
                 <Header subtitle="Competitions" />
                 <CompetitionForm
-                    competitions={this.state.competitions}
+                    competitions={this.state.groupedCompetitions}
                     onSave={this.getCompetitionsList.bind(this)}
                     onError={this.handleError.bind(this)} />
                 <div className="competitions__list">

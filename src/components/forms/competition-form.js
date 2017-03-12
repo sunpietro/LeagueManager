@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import InputField from '../form-elements/form-input';
-import FormButton from '../form-elements/form-button';
+import Button from '../form-elements/form-button';
+import Choices from '../form-elements/form-choices';
 import WPAPI from '../../tools/wpapi';
 
-import '../../css/components/competitions/competition-form.css';
+import '../../css/components/forms/competition-form.css';
 
 class CompetitionForm extends Component {
     constructor() {
@@ -20,7 +21,7 @@ class CompetitionForm extends Component {
         const slug = this.createSlug(this.refs.name.state.value, this.refs.slug.state.value);
 
         WPAPI.competition().create({
-            parent: 0,
+            parent: this.refs.parentCompetition.state.value,
             name: this.refs.name.state.value,
             slug: slug,
             taxonomy: 'sp_league',
@@ -47,16 +48,46 @@ class CompetitionForm extends Component {
         this.setState({formKey: 'form-' + Date.now()});
     }
 
+    prepareOptions() {
+        const comps = this.props.competitions;
+        const list = Object.keys(comps).map(this.createOptionsList.bind(this, comps));
+
+        return [].concat.apply([], list);
+    }
+
+    createOptionsList(comps, id) {
+        const comp = comps[id];
+
+        let list = [{
+            key: comp.id,
+            name: comp.name,
+        }];
+
+        if (comp.competitions.length) {
+            list = [...list, ...comp.competitions.map(subcomp => {
+                return {
+                    key: subcomp.id,
+                    name: `-- ${subcomp.name}`,
+                };
+            })];
+        }
+
+        return list;
+    }
+
     render() {
+        const options = this.prepareOptions();
+
         return (
-            <div className="competition-form__wrapper" key={this.state.formKey}>
+            <div className="competition-form" key={this.state.formKey}>
                 <h3 className="competition-form__title"></h3>
                 <form className="competition-form__fields">
                     <InputField ref="name" id="name" name="Competition name" required="true" focus="true"/>
                     <InputField ref="slug" id="slug" name="Slug" />
+                    <Choices ref="parentCompetition" id="parentCompetition" name="Parent competition" options={options} />
                     <div className="competition-form__buttons">
-                        <FormButton onclick={this.cancel.bind(this)} type="button" id="cancel" name="Cancel" />
-                        <FormButton onclick={this.save.bind(this)} type="button" id="save" name="Save" />
+                        <Button onclick={this.cancel.bind(this)} type="button" id="cancel" name="Cancel" />
+                        <Button onclick={this.save.bind(this)} type="button" id="save" name="Save" />
                     </div>
                 </form>
             </div>

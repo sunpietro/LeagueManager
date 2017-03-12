@@ -1,0 +1,14 @@
+.form-choices {
+    display: flex;
+    align-items: center;
+}
+
+.form-choices__label {
+    flex: 1 1 50%;
+    padding-right: 1rem;
+    text-align: right;
+}
+
+.form-choices__field {
+    flex: 1 1 50%;
+}

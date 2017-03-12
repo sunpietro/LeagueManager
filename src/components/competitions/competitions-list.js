@@ -61,6 +61,8 @@ class CompetitionsList extends Component {
         competitions.forEach(competition => {
             competition.key = `comp-${competition.parent}|${competition.id}`;
             if (!competition.parent) {
+                competition.competitions = [];
+
                 if (groupedCompetitions[competition.id] && groupedCompetitions[competition.id].competitions) {
                     competition.competitions = groupedCompetitions[competition.id].competitions;
                 }

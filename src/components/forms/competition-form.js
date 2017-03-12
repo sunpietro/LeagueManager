@@ -23,6 +23,7 @@ class CompetitionForm extends Component {
             parent: 0,
             name: this.refs.name.state.value,
             slug: slug,
+            taxonomy: 'sp_league',
         }).then(this.props.onSave).catch(this.props.onError);
 
         this.clearForm();

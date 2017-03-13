@@ -19,7 +19,7 @@ class CompetitionsList extends Component {
         };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.getCompetitionsList();
     }
 

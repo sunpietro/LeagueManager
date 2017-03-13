@@ -7,10 +7,17 @@ class FormButton extends Component {
 
         return (
             <div className={className}>
-                <button className="form-button__button" type={this.props.type} onClick={this.props.onclick}>{this.props.name}</button>
+                <button className="form-button__button" type={this.props.type} onClick={this.props.onClick}>{this.props.name}</button>
             </div>
         );
     }
 }
+
+FormButton.PropTypes = {
+    id: React.PropTypes.number.isRequired,
+    type: React.PropTypes.string.isRequired,
+    name: React.PropTypes.string.isRequired,
+    onClick: React.PropTypes.func.isRequired,
+};
 
 export default FormButton;

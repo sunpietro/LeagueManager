@@ -71,7 +71,10 @@ class CompetitionsList extends Component {
     renderCompetition(itemId) {
         const hash = this.state.groupedCompetitions[itemId];
 
-        return <CompetitionListItem key={hash.key} item={hash} />
+        return <CompetitionListItem
+            key={hash.key}
+            name={hash.name}
+            competitions={hash.competitions} />
     }
 
     render() {

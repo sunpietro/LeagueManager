@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
-import Competition from './competition-list-subitem';
+import CompetitionListSubItem from './competition-list-subitem';
 
 import '../../css/components/competitions/competition-list-item.css';
 
 class CompetitionListItem extends Component {
     renderCompetition(competition) {
-        return <Competition key={competition.key} item={competition} />
+        return <CompetitionListSubItem
+            id={competition.id}
+            key={competition.key}
+            name={competition.name}
+            parent={competition.parent} />
     }
 
     render() {
-        const item = this.props.item;
-
         return (
             <div className="component component--competition-list-item">
-                <h3 className="component--competition-list-item__title">{item.name}</h3>
+                <h3 className="component--competition-list-item__title">{this.props.name}</h3>
                 <div className="component--competition-list-item__competitions">
-                    {item.competitions.map(this.renderCompetition)}
+                    {this.props.competitions.map(this.renderCompetition)}
                 </div>
             </div>
         );
     }
 }
+
+CompetitionListItem.PropTypes = {
+    name: React.PropTypes.string.isRequired,
+    competitions: React.PropTypes.arrayOf(React.PropTypes.object).isRequired
+};
 
 export default CompetitionListItem;

@@ -11,7 +11,7 @@ class FormInput extends Component {
             hidden: this.initDefaultValue('hidden'),
             required: this.initDefaultValue('required'),
             disabled: this.initDefaultValue('disabled'),
-            maxlength: this.initDefaultValue('maxlength'),
+            maxLength: this.initDefaultValue('maxlength'),
             focus: this.initDefaultValue('focus'),
         };
     }
@@ -23,7 +23,7 @@ class FormInput extends Component {
             required: false,
             disabled: false,
             focus: false,
-            maxlength: 128
+            maxLength: 128
         };
 
         return typeof this.props[key] !== 'undefined' ? this.props[key] : values[key];
@@ -62,11 +62,25 @@ class FormInput extends Component {
                     defaultValue={this.state.value}
                     disabled={this.state.disabled}
                     required={this.state.required}
-                    maxLength={this.state.maxlength}
+                    maxLength={this.state.maxLength}
                     onChange={this.handleChange.bind(this)} />
             </div>
         );
     }
 }
+
+FormInput.PropTypes = {
+    id: React.PropTypes.number.isRequired,
+    name: React.PropTypes.string.isRequired,
+    type: React.PropTypes.string.isRequired,
+    value: React.PropTypes.string,
+    focus: React.PropTypes.bool,
+    hidden: React.PropTypes.bool,
+    options: React.PropTypes.array,
+    required: React.PropTypes.bool,
+    disabled: React.PropTypes.bool,
+    maxLength: React.PropTypes.number,
+    placeholder: React.PropTypes.string,
+};
 
 export default FormInput;

@@ -11,4 +11,8 @@ class Header extends Component {
     }
 }
 
+Header.PropTypes = {
+    subtitle: React.PropTypes.string.isRequired,
+};
+
 export default Header;

@@ -86,13 +86,19 @@ class CompetitionForm extends Component {
                     <InputField ref="slug" id="slug" name="Slug" />
                     <Choices ref="parentCompetition" id="parentCompetition" name="Parent competition" options={options} />
                     <div className="competition-form__buttons">
-                        <Button onclick={this.cancel.bind(this)} type="button" id="cancel" name="Cancel" />
-                        <Button onclick={this.save.bind(this)} type="button" id="save" name="Save" />
+                        <Button onClick={this.cancel.bind(this)} type="button" id="cancel" name="Cancel" />
+                        <Button onClick={this.save.bind(this)} type="button" id="save" name="Save" />
                     </div>
                 </form>
             </div>
         );
     }
 }
+
+CompetitionForm.PropTypes = {
+    competitions: React.PropTypes.object.isRequired,
+    onSave: React.PropTypes.func.isRequired,
+    onError: React.PropTypes.func.isRequired,
+};
 
 export default CompetitionForm;

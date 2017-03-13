@@ -65,4 +65,14 @@ class FormChoices extends Component {
     }
 }
 
+FormChoices.PropTypes = {
+    id: React.PropTypes.number.isRequired,
+    name: React.PropTypes.string.isRequired,
+    value: React.PropTypes.string,
+    hidden: React.PropTypes.bool,
+    options: React.PropTypes.arrayOf(React.PropTypes.object),
+    required: React.PropTypes.bool,
+    disabled: React.PropTypes.bool,
+};
+
 export default FormChoices;

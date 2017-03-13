@@ -10,11 +10,6 @@ class Competition extends Component {
         this.state = {
             id: 0,
             name: '',
-            link: '',
-            slug: '',
-            parent: 0,
-            taxonomy: '',
-            description: '',
         };
     }
 
@@ -26,16 +21,9 @@ class Competition extends Component {
     }
 
     updateCompetitionState(competition) {
-        console.log('updateCompetitionState', competition);
-
         this.setState({
             id: competition.id,
             name: competition.name,
-            link: competition.link,
-            slug: competition.slug,
-            parent: competition.parent,
-            taxonomy: competition.taxonomy,
-            description: competition.description,
         });
     }
 
@@ -58,9 +46,7 @@ class Competition extends Component {
             <div className="component component--competition">
                 <Nav />
                 <Header subtitle={subtitle} />
-                <div className="component--competition__seasons">
-
-                </div>
+                <div className="component--competition__seasons"></div>
             </div>
         );
     }

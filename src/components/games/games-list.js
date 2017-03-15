@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../page-elements/header';
 import Nav from '../page-elements/nav';
+import LoadingScreen from '../page-elements/loading-screen';
 import GameListItem from './game-list-item';
 import WPAPI from '../../tools/wpapi';
 
@@ -11,7 +12,8 @@ class GamesList extends Component {
         this.state = {
             games: [],
             comps: [],
-            seasons: []
+            seasons: [],
+            inProgress: true
         };
     }
 
@@ -28,14 +30,11 @@ class GamesList extends Component {
     renderMatchesList(result) {
         const [ games, comps, seasons ] = result;
 
-        console.log('renderMatchesList:games', games);
-        console.log('renderMatchesList:comps', comps);
-        console.log('renderMatchesList:seasons', seasons);
-
         this.setState({
             games,
             comps,
-            seasons
+            seasons,
+            inProgress: false
         });
     }
 
@@ -48,8 +47,14 @@ class GamesList extends Component {
     }
 
     render() {
+        const componentClass = 'component component--games-list';
+        const componentStateClass = !this.state.inProgress ?
+            componentClass :
+            `${componentClass} component--is-loading`;
+
         return (
-            <div className="component component--games-list">
+            <div className={componentStateClass}>
+                <LoadingScreen />
                 <Nav />
                 <Header subtitle="Matches" />
                 <div className="games__list">

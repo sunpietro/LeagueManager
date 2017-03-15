@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import WPAPI from '../../tools/wpapi';
+import LoadingScreen from '../page-elements/loading-screen';
 
 import '../../css/components/games/game-list-item.css';
 
@@ -11,9 +12,11 @@ class GameListItem extends Component {
             home: {},
             away: {},
             comp: {},
-            season: {}
-        }
+            season: {},
+            inProgress: true,
+        };
     }
+
     componentDidMount() {
         const game = this.props.game;
         const promises = [
@@ -32,25 +35,39 @@ class GameListItem extends Component {
     updateGameInfo(data) {
         const [ home, away, comp, season ] = data;
 
-        this.setState({home, away, comp, season});
+        this.setState({home, away, comp, season, inProgress: false});
     }
 
     handleError(error) {
         console.log('[ERROR]', error);
     }
 
+    decodeHTML(html) {
+        const txt = document.createElement('textarea');
+
+        txt.innerHTML = html;
+
+        return txt.value;
+    }
+
     render() {
         const game = this.props.game;
-
-        if (!Object.keys(this.state.home).length) {
-            return <div></div>;
-        }
+        const title = !Object.keys(this.state.home).length ?
+            (<h3 className="component--game-list-item__title">
+                {this.decodeHTML(game.title.rendered)}
+            </h3>) :
+            (<h3 className="component--game-list-item__title">
+                {this.state.home.title.rendered} {game.main_results[0]} - {game.main_results[1]} {this.state.away.title.rendered}
+            </h3>);
+        const componentClass = 'component component--game-list-item';
+        const componentStateClass = !this.state.inProgress ?
+            componentClass :
+            `${componentClass} component--is-loading`;
 
         return (
-            <div className="component component--game-list-item">
-                <h3 className="component--game-list-item__title">
-                    {this.state.home.title.rendered} {game.main_results[0]} - {game.main_results[1]} {this.state.away.title.rendered}
-                </h3>
+            <div className={componentStateClass}>
+                <LoadingScreen />
+                {title}
             </div>
         );
     }

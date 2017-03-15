@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../css/page-elements/loading-screen.css';
+import '../../css/components/page-elements/loading-screen.css';
 
 function LoadingScreen(props) {
     return (<div className="component component--loading-screen">

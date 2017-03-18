@@ -7,6 +7,7 @@ import CompetitionsList from './components/competitions/competitions-list';
 import Competition from './components/competitions/competition';
 import Seasons from './components/seasons';
 import GamesList from './components/games/games-list';
+import Game from './components/games/game';
 import Players from './components/players';
 import Stats from './components/stats';
 import Config from './components/config';
@@ -21,6 +22,7 @@ ReactDOM.render((
         <Route path="/competition/:parentId/:competitionId/season/:seasonId" component={Competition} />
         <Route path="/seasons" component={Seasons} />
         <Route path="/games" component={GamesList} />
+        <Route path="/game/:gameId" component={Game} />
         <Route path="/players" component={Players} />
         <Route path="/stats" component={Stats} />
         <Route path="/config" component={Config} />

@@ -10,6 +10,7 @@ class Game extends Component {
 
         this.state = {
             inProgress: true,
+            game: {},
         };
     }
 
@@ -21,9 +22,10 @@ class Game extends Component {
     }
 
     updateGameState(result) {
-        console.log('updateGameState', result);
-
-        this.setState({inProgress: false});
+        this.setState({
+            inProgress: false,
+            game: result,
+        });
     }
 
     handleError(error) {
@@ -32,17 +34,22 @@ class Game extends Component {
 
     render() {
         const componentClass = 'component component--game';
-        const title = this.state.inProgress ? 'Loading game info' : 'Game loaded';
+        const game = this.state.game;
+        const gameInfo = game.event_info ? game.event_info : {};
+        const title = this.state.inProgress ?
+            'Loading game info' :
+            `${gameInfo.teams[0].post_title} ${game.main_results[0]} - ${game.main_results[1]} ${gameInfo.teams[1].post_title}`;
         const componentStateClass = !this.state.inProgress ?
             componentClass :
             `${componentClass} component--is-loading`;
+
+        console.log('render', game);
 
         return (
             <div className={componentStateClass}>
                 <LoadingScreen />
                 <Nav />
                 <Header subtitle={title} />
-                <div></div>
             </div>
         );
     }

@@ -35,6 +35,17 @@ class FormChoices extends Component {
 
     render() {
         let className = 'form-choices';
+        let attrs = {
+            id: this.props.id,
+            ref: this.props.id,
+            name: this.props.id,
+            onChange: this.handleChange.bind(this),
+            className: 'form-choices__field',
+        };
+
+        if (typeof this.props.selectedOption !== 'undefined' && this.props.selectedOption.length) {
+            attrs.defaultValue = this.props.selectedOption;
+        }
 
         if (this.state.hidden) {
             className += ' form-choices--hidden';
@@ -51,13 +62,8 @@ class FormChoices extends Component {
         return (
             <div className={className}>
                 <label className="form-choices__label" htmlFor={this.props.id}>{this.props.name}</label>
-                <select
-                    className="form-choices__field"
-                    name={this.props.id}
-                    id={this.props.id}
-                    ref={this.props.id}
-                    onChange={this.handleChange.bind(this)}>
-                    <option value="0" key="0">Select a parent competition</option>
+                <select {...attrs}>
+                    <option value="0" key="0">{this.props.emptyOptionLabel}</option>
                     {this.props.options.map(this.renderOption.bind(this))}
                 </select>
             </div>
@@ -73,6 +79,8 @@ FormChoices.PropTypes = {
     options: React.PropTypes.arrayOf(React.PropTypes.object),
     required: React.PropTypes.bool,
     disabled: React.PropTypes.bool,
+    selectedOption: React.PropTypes.any,
+    emptyOptionLabel: React.PropTypes.string.isRequired,
 };
 
 export default FormChoices;

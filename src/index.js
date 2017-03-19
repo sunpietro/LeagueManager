@@ -10,7 +10,7 @@ import GamesList from './components/games/games-list';
 import Game from './components/games/game';
 import Players from './components/players';
 import Stats from './components/stats';
-import Config from './components/config';
+import Config from './components/config/config';
 
 import './css/index.css';
 

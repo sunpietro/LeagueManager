@@ -138,6 +138,8 @@ class ConfigForm extends Component {
         const componentStateClass = !this.state.inProgress ?
             componentClass :
             `${componentClass} component--is-loading`;
+        const defaultCompetition = window.localStorage.getItem('spDefaultCompetition');
+        const defaultSeason = window.localStorage.getItem('spDefaultSeason');
 
         return (
             <div className={componentStateClass}>
@@ -148,14 +150,16 @@ class ConfigForm extends Component {
                         id="defaultCompetition"
                         name="Default competition"
                         options={this.state.competitionOptions}
-                        selectedOption={window.localStorage.getItem('spDefaultCompetition')}
+                        value={defaultCompetition}
+                        selectedOption={defaultCompetition}
                         emptyOptionLabel="Select a default competition" />
                     <Choices
                         ref="defaultSeason"
                         id="defaultSeason"
                         name="Default season"
                         options={this.state.seasonOptions}
-                        selectedOption={window.localStorage.getItem('spDefaultSeason')}
+                        value={defaultSeason}
+                        selectedOption={defaultSeason}
                         emptyOptionLabel="Select a default season" />
                     <div className="config-form__buttons">
                         <Button onClick={this.cancel.bind(this)} type="button" id="cancel" name="Cancel" />

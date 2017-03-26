@@ -30,10 +30,22 @@ class FormChoices extends Component {
     }
 
     handleChange(event) {
+        if (typeof this.props.onChange === 'function') {
+            this.props.onChange({
+                id: this.props.id,
+                value: event.target.value
+            });
+        }
+
         this.setState({value: event.target.value});
     }
 
     render() {
+        const selectedOption = this.props.selectedOption;
+        const isOptionValid = typeof selectedOption !== 'undefined' &&
+            selectedOption !== null &&
+            (selectedOption || selectedOption.toString() === '0') &&
+            selectedOption.length;
         let className = 'form-choices';
         let attrs = {
             id: this.props.id,
@@ -43,21 +55,10 @@ class FormChoices extends Component {
             className: 'form-choices__field',
         };
 
-        if (typeof this.props.selectedOption !== 'undefined' && this.props.selectedOption.length) {
-            attrs.defaultValue = this.props.selectedOption;
-        }
-
-        if (this.state.hidden) {
-            className += ' form-choices--hidden';
-        }
-
-        if (this.state.required) {
-            className += ' form-choices--required';
-        }
-
-        if (this.state.disabled) {
-            className += ' form-choices--disabled';
-        }
+        if (isOptionValid) attrs.defaultValue = this.props.selectedOption;
+        if (this.state.hidden) className += ' form-choices--hidden';
+        if (this.state.required) className += ' form-choices--required';
+        if (this.state.disabled) className += ' form-choices--disabled';
 
         return (
             <div className={className}>

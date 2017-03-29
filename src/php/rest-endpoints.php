@@ -43,6 +43,10 @@ function expose_rest_endpoints() {
     $wp_taxonomies['sp_venue']->show_in_rest = true;
     $wp_taxonomies['sp_venue']->rest_base = 'venue';
     $wp_taxonomies['sp_venue']->rest_controller_class = 'WP_REST_Terms_Controller';
+
+    $wp_taxonomies['sp_position']->show_in_rest = true;
+    $wp_taxonomies['sp_position']->rest_base = 'position';
+    $wp_taxonomies['sp_position']->rest_controller_class = 'WP_REST_Terms_Controller';
 }
 add_action('init', 'expose_rest_endpoints');
 

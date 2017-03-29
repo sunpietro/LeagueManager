@@ -12,6 +12,7 @@ class Nav extends Component {
                 <li className="component--nav__link"><Link to="/seasons">Seasons</Link></li>
                 <li className="component--nav__link"><Link to="/games">Matches</Link></li>
                 <li className="component--nav__link"><Link to="/players">Players</Link></li>
+                <li className="component--nav__link"><Link to="/positions">Positions</Link></li>
                 <li className="component--nav__link"><Link to="/stats">Stats</Link></li>
                 <li className="component--nav__link"><Link to="/config">Config</Link></li>
             </ul>

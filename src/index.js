@@ -11,6 +11,7 @@ import Game from './components/games/game';
 import Players from './components/players';
 import Stats from './components/stats';
 import Config from './components/config/config';
+import PositionsList from './components/positions/positions-list';
 
 import './css/index.css';
 
@@ -24,6 +25,7 @@ ReactDOM.render((
         <Route path="/games" component={GamesList} />
         <Route path="/game/:gameId" component={Game} />
         <Route path="/players" component={Players} />
+        <Route path="/positions" component={PositionsList} />
         <Route path="/stats" component={Stats} />
         <Route path="/config" component={Config} />
     </Router>

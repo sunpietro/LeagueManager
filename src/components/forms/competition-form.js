@@ -35,7 +35,11 @@ class CompetitionForm extends Component {
             return slug;
         }
 
-        return name.normalize('NFKD').replace(/[\u0300-\u036F]/g, '');
+        return name
+            .normalize('NFKD')
+            .replace(/[\u0300-\u036F]/g, '')
+            .replace(' ', '-')
+            .toLowerCase();
     }
 
     cancel(event) {

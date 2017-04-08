@@ -1,0 +1,7 @@
+[class*="component-form--"] .form-input + .form-textarea,
+[class*="component-form--"] .form-choices + .form-textarea,
+[class*="component-form--"] .form-textarea + .form-textarea,
+[class*="component-form--"] .form-textarea + .form-input,
+[class*="component-form--"] .form-textarea + .form-choices {
+    margin-top: .5rem;
+}

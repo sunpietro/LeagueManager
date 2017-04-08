@@ -8,7 +8,7 @@ import Competition from './components/competitions/competition';
 import Seasons from './components/seasons';
 import GamesList from './components/games/games-list';
 import Game from './components/games/game';
-import Players from './components/players';
+import PlayersList from './components/players/players-list';
 import Stats from './components/stats';
 import Config from './components/config/config';
 import PositionsList from './components/positions/positions-list';
@@ -24,7 +24,7 @@ ReactDOM.render((
         <Route path="/seasons" component={Seasons} />
         <Route path="/games" component={GamesList} />
         <Route path="/game/:gameId" component={Game} />
-        <Route path="/players" component={Players} />
+        <Route path="/players" component={PlayersList} />
         <Route path="/positions" component={PositionsList} />
         <Route path="/stats" component={Stats} />
         <Route path="/config" component={Config} />

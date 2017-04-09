@@ -9,6 +9,8 @@ import Seasons from './components/seasons';
 import GamesList from './components/games/games-list';
 import Game from './components/games/game';
 import PlayersList from './components/players/players-list';
+import TeamsList from './components/teams/teams-list';
+import Team from './components/teams/team';
 import Stats from './components/stats';
 import Config from './components/config/config';
 import PositionsList from './components/positions/positions-list';
@@ -25,6 +27,8 @@ ReactDOM.render((
         <Route path="/games" component={GamesList} />
         <Route path="/game/:gameId" component={Game} />
         <Route path="/players" component={PlayersList} />
+        <Route path="/teams" component={TeamsList} />
+        <Route path="/team/:teamId" component={Team} />
         <Route path="/positions" component={PositionsList} />
         <Route path="/stats" component={Stats} />
         <Route path="/config" component={Config} />

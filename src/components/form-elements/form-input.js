@@ -11,7 +11,7 @@ class FormInput extends Component {
             hidden: this.initDefaultValue('hidden'),
             required: this.initDefaultValue('required'),
             disabled: this.initDefaultValue('disabled'),
-            maxLength: this.initDefaultValue('maxlength'),
+            maxLength: this.initDefaultValue('maxLength'),
             focus: this.initDefaultValue('focus'),
         };
     }

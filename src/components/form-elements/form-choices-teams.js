@@ -8,7 +8,8 @@ class FormChoicesTeams extends Component {
 
         this.state = {
             options: [],
-            disabled: true
+            disabled: true,
+            rawData: [],
         };
     }
 
@@ -22,7 +23,8 @@ class FormChoicesTeams extends Component {
         this.setState({
             key: Date.now(),
             disabled: false,
-            options: this.prepareOptions(teams)
+            options: this.prepareOptions(teams),
+            rawData: teams,
         });
     }
 
@@ -68,6 +70,7 @@ class FormChoicesTeams extends Component {
             <div className="form-choices--teams" key={this.state.key}>
                 <Choices
                     id={this.props.id}
+                    ref="choices"
                     key={this.state.key}
                     name={this.props.name}
                     value={this.props.value}
@@ -77,6 +80,7 @@ class FormChoicesTeams extends Component {
                     disabled={this.state.disabled}
                     selectedOption={this.props.selectedOption}
                     emptyOptionLabel={this.props.emptyOptionLabel}
+                    onChange={this.props.onChange}
                 />
             </div>
         );
@@ -93,6 +97,7 @@ FormChoicesTeams.PropTypes = {
     disabled: React.PropTypes.bool,
     selectedOption: React.PropTypes.any,
     emptyOptionLabel: React.PropTypes.string.isRequired,
+    onChange: React.PropTypes.func,
 };
 
 export default FormChoicesTeams;

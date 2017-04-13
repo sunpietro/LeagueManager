@@ -7,8 +7,10 @@ class FormChoicesCompetitions extends Component {
         super(props);
 
         this.state = {
+            key: Date.now(),
             disabled: true,
-            options: []
+            options: [],
+            rawData: [],
         };
     }
 
@@ -21,7 +23,9 @@ class FormChoicesCompetitions extends Component {
     updateState([competitions]) {
         this.setState({
             key: Date.now(),
-            options: this.prepareOptions(this.groupCompetitionsByParent(competitions))
+            disabled: false,
+            options: this.prepareOptions(this.groupCompetitionsByParent(competitions)),
+            rawData: competitions
         });
     }
 
@@ -82,6 +86,7 @@ class FormChoicesCompetitions extends Component {
             <div className="form-choices--competitions" key={this.state.key}>
                 <Choices
                     id={this.props.id}
+                    ref="choices"
                     key={this.state.key}
                     name={this.props.name}
                     value={this.props.value}
@@ -91,6 +96,7 @@ class FormChoicesCompetitions extends Component {
                     disabled={this.state.disabled}
                     selectedOption={this.props.selectedOption}
                     emptyOptionLabel={this.props.emptyOptionLabel}
+                    onChange={this.props.onChange}
                 />
             </div>
         );
@@ -107,6 +113,7 @@ FormChoicesCompetitions.PropTypes = {
     disabled: React.PropTypes.bool,
     selectedOption: React.PropTypes.any,
     emptyOptionLabel: React.PropTypes.string.isRequired,
+    onChange: React.PropTypes.func,
 };
 
 export default FormChoicesCompetitions;

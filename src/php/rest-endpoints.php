@@ -55,3 +55,4 @@ add_action('init', 'expose_rest_endpoints');
 require get_parent_theme_file_path('/inc/actions/event-actions.php');
 require get_parent_theme_file_path('/inc/actions/player-actions.php');
 require get_parent_theme_file_path('/inc/actions/team-actions.php');
+require get_parent_theme_file_path('/inc/actions/squad-actions.php');

@@ -14,6 +14,8 @@ import Team from './components/teams/team';
 import Stats from './components/stats';
 import Config from './components/config/config';
 import PositionsList from './components/positions/positions-list';
+import SquadsList from './components/squads/squads-list';
+import SquadsCreateForm from './components/squads/squad-create';
 
 import './css/index.css';
 
@@ -29,6 +31,8 @@ ReactDOM.render((
         <Route path="/players" component={PlayersList} />
         <Route path="/teams" component={TeamsList} />
         <Route path="/team/:teamId" component={Team} />
+        <Route path="/squads" component={SquadsList} />
+        <Route path="/squads/create" component={SquadsCreateForm} />
         <Route path="/positions" component={PositionsList} />
         <Route path="/stats" component={Stats} />
         <Route path="/config" component={Config} />

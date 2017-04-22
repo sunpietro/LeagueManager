@@ -8,7 +8,8 @@ class FormChoicesSeasons extends Component {
 
         this.state = {
             disabled: true,
-            options: []
+            options: [],
+            rawData: [],
         };
     }
 
@@ -21,7 +22,9 @@ class FormChoicesSeasons extends Component {
     updateState([seasons]) {
         this.setState({
             key: Date.now(),
-            options: this.prepareOptions(this.groupSeasonsByParent(seasons))
+            disabled: false,
+            options: this.prepareOptions(this.groupSeasonsByParent(seasons)),
+            rawData: seasons,
         });
     }
 
@@ -65,18 +68,18 @@ class FormChoicesSeasons extends Component {
         return a.name.localeCompare(b.name);
     }
 
-    createOptionsList(comps, id) {
-        const comp = comps[id];
+    createOptionsList(seasons, id) {
+        const season = seasons[id];
         let list = [{
-            key: comp.id,
-            name: comp.name,
+            key: season.id,
+            name: season.name,
         }];
 
-        if (comp.seasons.length) {
-            list = [...list, ...comp.seasons.map(subcomp => {
+        if (season.seasons.length && this.props.showMatchdays) {
+            list = [...list, ...season.seasons.map(subseason => {
                 return {
-                    key: subcomp.id,
-                    name: `-- ${subcomp.name}`,
+                    key: subseason.id,
+                    name: `-- ${subseason.name}`,
                 };
             })];
         }
@@ -89,6 +92,7 @@ class FormChoicesSeasons extends Component {
             <div className="form-choices--seasons" key={this.state.key}>
                 <Choices
                     id={this.props.id}
+                    ref="choices"
                     key={this.state.key}
                     name={this.props.name}
                     value={this.props.value}
@@ -98,6 +102,7 @@ class FormChoicesSeasons extends Component {
                     disabled={this.state.disabled}
                     selectedOption={this.props.selectedOption}
                     emptyOptionLabel={this.props.emptyOptionLabel}
+                    onChange={this.props.onChange}
                 />
             </div>
         );
@@ -114,6 +119,8 @@ FormChoicesSeasons.PropTypes = {
     disabled: React.PropTypes.bool,
     selectedOption: React.PropTypes.any,
     emptyOptionLabel: React.PropTypes.string.isRequired,
+    showMatchdays: React.PropTypes.bool,
+    onChange: React.PropTypes.func,
 };
 
 export default FormChoicesSeasons;

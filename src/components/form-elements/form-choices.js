@@ -30,14 +30,14 @@ class FormChoices extends Component {
     }
 
     handleChange(event) {
+        this.setState({value: event.target.value});
+
         if (typeof this.props.onChange === 'function') {
             this.props.onChange({
                 id: this.props.id,
                 value: event.target.value
             });
         }
-
-        this.setState({value: event.target.value});
     }
 
     render() {
@@ -82,6 +82,7 @@ FormChoices.PropTypes = {
     disabled: React.PropTypes.bool,
     selectedOption: React.PropTypes.any,
     emptyOptionLabel: React.PropTypes.string.isRequired,
+    onChange: React.PropTypes.func,
 };
 
 export default FormChoices;

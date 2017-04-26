@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import '../../css/components/form-elements/form-choices.css';
-
 class FormChoices extends Component {
     constructor(props) {
         super(props);
@@ -46,13 +44,13 @@ class FormChoices extends Component {
             selectedOption !== null &&
             (selectedOption || selectedOption.toString() === '0') &&
             selectedOption.length;
-        let className = 'form-choices';
+        let className = 'form-choices form__field pure-control-group';
         let attrs = {
             id: this.props.id,
             ref: this.props.id,
             name: this.props.id,
             onChange: this.handleChange.bind(this),
-            className: 'form-choices__field',
+            className: 'form-choices__field form__field-input',
         };
 
         if (isOptionValid) attrs.defaultValue = this.props.selectedOption;
@@ -62,7 +60,7 @@ class FormChoices extends Component {
 
         return (
             <div className={className}>
-                <label className="form-choices__label" htmlFor={this.props.id}>{this.props.name}</label>
+                <label className="form-choices__label form__field-label" htmlFor={this.props.id}>{this.props.name}</label>
                 <select {...attrs}>
                     <option value="0" key="0">{this.props.emptyOptionLabel}</option>
                     {this.props.options.map(this.renderOption.bind(this))}

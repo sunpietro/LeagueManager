@@ -4,6 +4,8 @@ import InputField from '../form-elements/form-input';
 import Button from '../form-elements/form-button';
 import WPAPI from '../../tools/wpapi';
 
+import '../../css/components/forms/form-base.css';
+
 class PositionForm extends Component {
     constructor(props) {
         super(props);
@@ -56,7 +58,7 @@ class PositionForm extends Component {
     }
 
     render() {
-        const componentClass = 'component component--position-form';
+        const componentClass = 'component component--position-form component--form';
         const nameAttrs = {
             id: 'name',
             ref: 'name',
@@ -73,13 +75,15 @@ class PositionForm extends Component {
 
         return (
             <div className={componentClass}>
-                <form className="position-form__fields" key={this.state.key}>
-                    <InputField {...nameAttrs} />
-                    <Choices {...groupAttrs} />
-                    <div className="position-form__buttons">
-                        <Button onClick={this.cancel.bind(this)} type="button" id="cancel" name="Cancel" />
-                        <Button onClick={this.save.bind(this)} type="button" id="save" name="Save" />
-                    </div>
+                <form className="position-form__fields pure-form pure-form-aligned" key={this.state.key}>
+                    <fieldset>
+                        <InputField {...nameAttrs} />
+                        <Choices {...groupAttrs} />
+                        <div className="position-form__buttons">
+                            <Button onClick={this.cancel.bind(this)} type="button" id="cancel" name="Cancel" />
+                            <Button onClick={this.save.bind(this)} type="button" id="save" name="Save" />
+                        </div>
+                    </fieldset>
                 </form>
             </div>
         );

@@ -1,7 +1,78 @@
-[class*="component-form--"] .form-input + .form-textarea,
-[class*="component-form--"] .form-choices + .form-textarea,
-[class*="component-form--"] .form-textarea + .form-textarea,
-[class*="component-form--"] .form-textarea + .form-input,
-[class*="component-form--"] .form-textarea + .form-choices {
-    margin-top: .5rem;
+.component--form .Select-control,
+.component--form .Select-menu-outer {
+    display: block;
+    width: 20rem;
+}
+
+.component--form .rdt {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.component--form label[for="nationality"] + div {
+    display: inline-block;
+}
+
+.component--form .Select-multi-value-wrapper {
+    display: block;
+}
+
+.component--form .Select-control {
+    height: 2rem;
+}
+
+.component--form .Select-input {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    height: 2rem;
+}
+
+.component--form .Select-placeholder {
+    line-height: 2rem;
+}
+
+.component--form .Select-input > input {
+    width: 100%!important;
+    max-width: 100%;
+}
+
+.component--form .pure-form {
+    max-width: 40vw;
+    width: 100%;
+}
+
+.component--form .pure-form-aligned .pure-control-group {
+    display: flex;
+    align-items: center;
+}
+
+.component--form .pure-form-aligned .pure-control-group label {
+    flex: 0 0 10em;
+}
+
+.component--form .pure-form input[type=text],
+.component--form .pure-form input[type=number],
+.component--form .pure-form input[type=search],
+.component--form .pure-form input[type=tel],
+.component--form .pure-form input[type=color],
+.component--form .pure-form input[type=password],
+.component--form .pure-form input[type=email],
+.component--form .pure-form input[type=url],
+.component--form .pure-form input[type=date],
+.component--form .pure-form input[type=month],
+.component--form .pure-form input[type=time],
+.component--form .pure-form input[type=datetime],
+.component--form .pure-form input[type=datetime-local],
+.component--form .pure-form input[type=week],
+.component--form .pure-form select,
+.component--form .pure-form textarea {
+    flex: 1 1 auto;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: .75rem;
+}
+
+.component--form .pure-form textarea {
+    line-height: 1rem;
 }

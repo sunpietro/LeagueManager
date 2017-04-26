@@ -3,6 +3,7 @@ import Input from '../form-elements/form-input';
 import Button from '../form-elements/form-button';
 import WPAPI from '../../tools/wpapi';
 
+import '../../css/external/pure-forms.css';
 import '../../css/components/forms/form-base.css';
 
 class TeamForm extends Component {
@@ -68,7 +69,7 @@ class TeamForm extends Component {
     }
 
     render() {
-        let componentClass = 'component component-form--team';
+        let componentClass = 'component component-form--team component--form';
         let errorNotification = null;
         const nameAttrs = {
             id: 'name',
@@ -97,14 +98,16 @@ class TeamForm extends Component {
         return (
             <div className={componentClass}>
                 {errorNotification}
-                <form className="team-form__fields" key={this.state.key}>
-                    <Input {...nameAttrs} />
-                    <Input {...abbrAttrs} />
-                    <Input {...urlAttrs} />
-                    <div className="team-form__buttons">
-                        <Button onClick={this.cancel.bind(this)} type="button" id="cancel" name="Cancel" />
-                        <Button onClick={this.save.bind(this)} type="button" id="save" name="Save" />
-                    </div>
+                <form className="team-form__fields pure-form pure-form-aligned" key={this.state.key}>
+                    <fieldset>
+                        <Input {...nameAttrs} />
+                        <Input {...abbrAttrs} />
+                        <Input {...urlAttrs} />
+                        <div className="team-form__buttons">
+                            <Button onClick={this.cancel.bind(this)} type="button" id="cancel" name="Cancel" />
+                            <Button onClick={this.save.bind(this)} type="button" id="save" name="Save" />
+                        </div>
+                    </fieldset>
                 </form>
             </div>
         );

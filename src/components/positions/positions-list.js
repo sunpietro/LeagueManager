@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../page-elements/header';
-import Nav from '../page-elements/nav';
-import LoadingScreen from '../page-elements/loading-screen';
+import DefaultLayout from '../layouts/default';
 import PositionsGroup from './positions-group';
 import PositionForm from '../forms/position-form';
 import WPAPI from '../../tools/wpapi';
@@ -75,17 +73,10 @@ class PositionsList extends Component {
     }
 
     render() {
-        const componentClass = 'component component--positions-list';
-        const componentStateClass = !this.state.inProgress ?
-            componentClass :
-            `${componentClass} component--is-loading`;
         const positions = this.state.positions;
 
         return (
-            <div className={componentStateClass}>
-                <LoadingScreen />
-                <Nav />
-                <Header subtitle="Positions" />
+            <DefaultLayout subtitle="Positions" isLoading={this.state.inProgress}>
                 <PositionForm
                     positions={this.state.positions}
                     onSave={this.getPositions.bind(this)}
@@ -93,7 +84,7 @@ class PositionsList extends Component {
                 <div className="positions__list" key={this.state.key}>
                     {Object.keys(positions).map(this.renderPositionGroup.bind(this, positions))}
                 </div>
-            </div>
+            </DefaultLayout>
         );
     }
 }

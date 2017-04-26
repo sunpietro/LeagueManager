@@ -4,6 +4,8 @@ import Choices from '../form-elements/form-choices';
 import Button from '../form-elements/form-button';
 import WPAPI from '../../tools/wpapi';
 
+import '../../css/components/forms/form-base.css';
+
 class ConfigForm extends Component {
     constructor(props) {
         super(props);
@@ -31,8 +33,6 @@ class ConfigForm extends Component {
     }
 
     renderConfigForm(result) {
-        console.log('renderConfigForm', result);
-
         const competitionOptions = this.prepareCompetitionOptions(this.groupCompetitionsByParent(result[0]));
         const seasonOptions = this.prepareSeasonOptions(result[1]);
 
@@ -134,7 +134,7 @@ class ConfigForm extends Component {
     }
 
     render() {
-        const componentClass = 'component component--config-form';
+        const componentClass = 'component component--config-form component--form';
         const componentStateClass = !this.state.inProgress ?
             componentClass :
             `${componentClass} component--is-loading`;
@@ -144,27 +144,29 @@ class ConfigForm extends Component {
         return (
             <div className={componentStateClass}>
                 <LoadingScreen />
-                <form className="config-form__fields" key={this.state.key}>
-                    <Choices
-                        ref="defaultCompetition"
-                        id="defaultCompetition"
-                        name="Default competition"
-                        options={this.state.competitionOptions}
-                        value={defaultCompetition}
-                        selectedOption={defaultCompetition}
-                        emptyOptionLabel="Select a default competition" />
-                    <Choices
-                        ref="defaultSeason"
-                        id="defaultSeason"
-                        name="Default season"
-                        options={this.state.seasonOptions}
-                        value={defaultSeason}
-                        selectedOption={defaultSeason}
-                        emptyOptionLabel="Select a default season" />
-                    <div className="config-form__buttons">
-                        <Button onClick={this.cancel.bind(this)} type="button" id="cancel" name="Cancel" />
-                        <Button onClick={this.save.bind(this)} type="button" id="save" name="Save" />
-                    </div>
+                <form className="config-form__fields pure-form pure-form-aligned" key={this.state.key}>
+                    <fieldset>
+                        <Choices
+                            ref="defaultCompetition"
+                            id="defaultCompetition"
+                            name="Default competition"
+                            options={this.state.competitionOptions}
+                            value={defaultCompetition}
+                            selectedOption={defaultCompetition}
+                            emptyOptionLabel="Select a default competition" />
+                        <Choices
+                            ref="defaultSeason"
+                            id="defaultSeason"
+                            name="Default season"
+                            options={this.state.seasonOptions}
+                            value={defaultSeason}
+                            selectedOption={defaultSeason}
+                            emptyOptionLabel="Select a default season" />
+                        <div className="config-form__buttons">
+                            <Button onClick={this.cancel.bind(this)} type="button" id="cancel" name="Cancel" />
+                            <Button onClick={this.save.bind(this)} type="button" id="save" name="Save" />
+                        </div>
+                    </fieldset>
                 </form>
             </div>
         );

@@ -108,7 +108,7 @@ class SquadPlayers extends Component {
 
         return (
             <div className="component component--squad-players" key={this.state.key}>
-                <div className="squad-players__input">
+                <div className="squad-players__input pure-control-group">
                     <label className="form-input__label" htmlFor={fieldId}>Find a player</label>
                     <input
                         id={fieldId}

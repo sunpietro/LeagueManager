@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
-import Header from '../page-elements/header';
-import Nav from '../page-elements/nav';
-import LoadingScreen from '../page-elements/loading-screen';
+import DefaultLayout from '../layouts/default';
 import WPAPI from '../../tools/wpapi';
 import Season from '../form-elements/form-choices-seasons';
 import Competition from '../form-elements/form-choices-competitions';
 import Team from '../form-elements/form-choices-teams';
 import Squad from './squad-item';
+
+import '../../css/external/pure-forms.css';
+import '../../css/components/forms/form-base.css';
 
 class SquadsList extends Component {
     constructor(props) {
@@ -125,24 +126,16 @@ class SquadsList extends Component {
     }
 
     render() {
-        const componentClass = 'component component--squads';
-        const componentStateClass = !this.state.inProgress ?
-            componentClass :
-            `${componentClass} component--is-loading`;
-
         return (
-            <div className={componentStateClass}>
-                <LoadingScreen />
-                <Nav />
-                <Header subtitle="Squads" />
+            <DefaultLayout subtitle="Squads" isLoading={this.state.inProgress}>
                 <button type="button" onClick={this.gotoCreateSquad}>Create a squad</button>
-                <div className="squads__filters">
+                <div className="squads__filters pure-form pure-form-aligned">
                     <Competition id="competition" ref="competition" name="competition" emptyOptionLabel="All competitions" onChange={this.filter.bind(this, 'filterByCompetition')}/>
                     <Season id="season" ref="season" name="season" emptyOptionLabel="All seasons" showMatchdays={false} onChange={this.filter.bind(this, 'filterBySeason')} />
                     <Team id="team" ref="team" name="team" emptyOptionLabel="All teams" onChange={this.filter.bind(this, 'filterByTeam')} />
                 </div>
                 <div className="squads__list">{this.state.squads.map(this.renderSquad.bind(this))}</div>
-            </div>
+            </DefaultLayout>
         );
     }
 }

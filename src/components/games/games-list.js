@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../page-elements/header';
-import Nav from '../page-elements/nav';
-import LoadingScreen from '../page-elements/loading-screen';
+import DefaultLayout from '../layouts/default';
 import GameForm from '../forms/game-form';
 import GameListItem from './game-list-item';
 import WPAPI from '../../tools/wpapi';
@@ -56,10 +54,6 @@ class GamesList extends Component {
     }
 
     render() {
-        const componentClass = 'component component--games-list';
-        const componentStateClass = !this.state.inProgress ?
-            componentClass :
-            `${componentClass} component--is-loading`;
         const gameFormAttrs = {
             competitions: this.state.competitions,
             seasons: this.state.seasons,
@@ -68,15 +62,12 @@ class GamesList extends Component {
         };
 
         return (
-            <div className={componentStateClass}>
-                <LoadingScreen />
-                <Nav />
-                <Header subtitle="Matches" />
+            <DefaultLayout subtitle="Matches" isLoading={this.state.inProgress}>
                 <GameForm {...gameFormAttrs} />
                 <div className="games__list">
                     {this.state.games.map(this.renderGame.bind(this))}
                 </div>
-            </div>
+            </DefaultLayout>
         );
     }
 }

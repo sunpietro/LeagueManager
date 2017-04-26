@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import '../../css/components/form-elements/form-textarea.css';
-
 class FormTextarea extends Component {
     constructor(props) {
         super(props);
@@ -32,7 +30,7 @@ class FormTextarea extends Component {
     }
 
     render() {
-        let className = 'form-textarea';
+        let className = 'form-textarea form__field pure-control-group';
 
         if (this.state.hidden) {
             className += ' form-textarea--hidden';
@@ -48,9 +46,9 @@ class FormTextarea extends Component {
 
         return (
             <div className={className}>
-                <label className="form-textarea__label" htmlFor={this.props.id}>{this.props.name}</label>
+                <label className="form-textarea__label form__field-label" htmlFor={this.props.id}>{this.props.name}</label>
                 <textarea
-                    className="form-textarea__field"
+                    className="form-textarea__field form__field-input"
                     name={this.props.id}
                     id={this.props.id}
                     ref={this.props.id}

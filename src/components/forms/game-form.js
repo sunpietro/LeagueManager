@@ -7,8 +7,10 @@ import WPAPI from '../../tools/wpapi';
 
 // https://github.com/YouCanBookMe/react-datetime
 
-import PolishLocale from 'moment/locale/pl';
+import PolishLocale from 'moment/locale/pl'; // eslint-disable-line
 
+import '../../css/external/pure-forms.css';
+import '../../css/components/forms/form-base.css';
 import '../../css/external/react-datetime.css';
 
 class GameForm extends Component {
@@ -227,7 +229,7 @@ class GameForm extends Component {
     }
 
     render() {
-        const componentClass = 'component component--game-form';
+        const componentClass = 'component component--game-form component--form';
         const defaultSeason = window.localStorage.getItem('spDefaultSeason');
         const defaultCompetition = window.localStorage.getItem('spDefaultCompetition');
         const homeTeamAttrs = {
@@ -284,6 +286,7 @@ class GameForm extends Component {
             timeFormat: 'HH:mm',
             closeOnSelect: true,
             defaultValue: new Date(),
+            className: 'form__field'
         };
         const saveBtnAttrs = {
             id: 'save',
@@ -298,20 +301,25 @@ class GameForm extends Component {
 
         return (
             <div className={componentClass} key={this.state.key}>
-                <form className="game-form__fields">
-                    <div className="game-form__compseason">
-                        <Choices {...competetitionAttrs} />
-                        <Choices {...seasonAttrs} />
-                    </div>
-                    <Choices {...homeTeamAttrs} />
-                    <InputField {...homeTeamScoreAttrs} />
-                    <InputField {...awayTeamScoreAttrs} />
-                    <Choices {...awayTeamAttrs} />
-                    <DateTime {...gameDateAttrs} />
-                    <div className="game-form__buttons">
-                        <Button {...cancelBtnAttrs} />
-                        <Button {...saveBtnAttrs} />
-                    </div>
+                <form className="game-form__fields pure-form pure-form-aligned">
+                    <fieldset>
+                        <div className="game-form__compseason">
+                            <Choices {...competetitionAttrs} />
+                            <Choices {...seasonAttrs} />
+                        </div>
+                        <Choices {...homeTeamAttrs} />
+                        <InputField {...homeTeamScoreAttrs} />
+                        <InputField {...awayTeamScoreAttrs} />
+                        <Choices {...awayTeamAttrs} />
+                        <div className="pure-control-group">
+                            <label htmlFor={gameDateAttrs.ref}>Game date</label>
+                            <DateTime {...gameDateAttrs} />
+                        </div>
+                        <div className="game-form__buttons">
+                            <Button {...cancelBtnAttrs} />
+                            <Button {...saveBtnAttrs} />
+                        </div>
+                    </fieldset>
                 </form>
             </div>
         );

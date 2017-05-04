@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import Header from '../page-elements/header';
-import Nav from '../page-elements/nav';
 import ConfigForm from '../forms/config-form';
+import DefaultLayout from '../layouts/default';
 
 class Config extends Component {
     render() {
         return (
-            <div className="component component--config">
-                <Nav />
-                <Header subtitle="Config" />
+            <DefaultLayout subtitle="Config" isLoading={false}>
                 <ConfigForm />
-            </div>
+            </DefaultLayout>
         );
     }
 }

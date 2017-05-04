@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../page-elements/header';
-import Nav from '../page-elements/nav';
+import DefaultLayout from '../layouts/default';
 import Form from '../forms/team-form';
 import WPAPI from '../../tools/wpapi';
 import Team from './teams-list-item';
@@ -46,22 +45,15 @@ class TeamsList extends Component {
     }
 
     render() {
-        const componentClass = 'component component--teams-list';
-        const componentStateClass = !this.state.inProgress ?
-            componentClass :
-            `${componentClass} component--is-loading`;
-
         return (
-            <div className={componentStateClass}>
-                <Nav />
-                <Header subtitle="Teams" />
+            <DefaultLayout subtitle="Teams" isLoading={this.state.inProgress}>
                 <Form
                     onSave={this.getTeamsList.bind(this)}
                     onError={this.handleError.bind(this)} />
                 <div className="teams-list">
                     {this.state.teams.map(this.renderTeam.bind(this))}
                 </div>
-            </div>
+            </DefaultLayout>
         );
     }
 }

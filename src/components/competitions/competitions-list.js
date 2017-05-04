@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import Header from '../page-elements/header';
-import Nav from '../page-elements/nav';
-import LoadingScreen from '../page-elements/loading-screen';
 import CompetitionListItem from './competition-list-item';
 import CompetitionForm from '../forms/competition-form';
+import DefaultLayout from '../layouts/default';
 import WPAPI from '../../tools/wpapi';
 
 import '../../css/components/competitions/competitions.css';
@@ -79,24 +77,19 @@ class CompetitionsList extends Component {
 
     render() {
         const itemIds = Object.keys(this.state.groupedCompetitions);
-        const componentClass = 'component component--competitions-list';
-        const componentStateClass = !this.state.inProgress ?
-            componentClass :
-            `${componentClass} component--is-loading`;
 
         return (
-            <div className={componentStateClass}>
-                <LoadingScreen />
-                <Nav />
-                <Header subtitle="Competitions" />
-                <CompetitionForm
-                    competitions={this.state.groupedCompetitions}
-                    onSave={this.getCompetitionsList.bind(this)}
-                    onError={this.handleError.bind(this)} />
-                <div className="competitions__list">
-                    {itemIds.map(this.renderCompetition.bind(this))}
+            <DefaultLayout subtitle="Competitions" isLoading={this.state.inProgress}>
+                <div className="component component--competitions-list">
+                    <CompetitionForm
+                        competitions={this.state.groupedCompetitions}
+                        onSave={this.getCompetitionsList.bind(this)}
+                        onError={this.handleError.bind(this)} />
+                    <div className="competitions__list">
+                        {itemIds.map(this.renderCompetition.bind(this))}
+                    </div>
                 </div>
-            </div>
+            </DefaultLayout>
         );
     }
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../page-elements/header';
-import Nav from '../page-elements/nav';
+import DefaultLayout from '../layouts/default';
 import Form from '../forms/player-form';
 
 class PlayersList extends Component {
@@ -14,13 +13,11 @@ class PlayersList extends Component {
 
     render() {
         return (
-            <div className="component component--players-list">
-                <Nav />
-                <Header subtitle="Players" />
+            <DefaultLayout subtitle="Players" isLoading={false}>
                 <Form
                     onSave={this.getPlayersList.bind(this)}
                     onError={this.handleError.bind(this)} />
-            </div>
+            </DefaultLayout>
         );
     }
 }

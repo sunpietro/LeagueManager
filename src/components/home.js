@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
-import Header from './page-elements/header';
-import Nav from './page-elements/nav';
+import DefaultLayout from './layouts/default';
 
 class Home extends Component {
     render() {
-        return (
-            <div className="component component--home">
-                <Nav />
-                <Header subtitle="Home" />
-            </div>
-        );
+        return <DefaultLayout subtitle="Home" isLoading={false}></DefaultLayout>;
     }
 }
 

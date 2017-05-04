@@ -4,7 +4,8 @@ import Button from '../form-elements/form-button';
 import Choices from '../form-elements/form-choices';
 import WPAPI from '../../tools/wpapi';
 
-import '../../css/components/forms/competition-form.css';
+import '../../css/external/pure-forms.css';
+import '../../css/components/forms/form-base.css';
 
 class CompetitionForm extends Component {
     constructor() {
@@ -83,9 +84,10 @@ class CompetitionForm extends Component {
         const options = this.prepareOptions();
 
         return (
-            <div className="competition-form" key={this.state.formKey}>
+            <div className="competition-form component--form" key={this.state.formKey}>
                 <h3 className="competition-form__title"></h3>
-                <form className="competition-form__fields">
+                <form className="competition-form__fields pure-form pure-form-aligned">
+                    <fieldset>
                     <InputField ref="name" id="name" name="Competition name" required="true" focus="true"/>
                     <InputField ref="slug" id="slug" name="Slug" />
                     <Choices
@@ -98,6 +100,7 @@ class CompetitionForm extends Component {
                         <Button onClick={this.cancel.bind(this)} type="button" id="cancel" name="Cancel" />
                         <Button onClick={this.save.bind(this)} type="button" id="save" name="Save" />
                     </div>
+                    </fieldset>
                 </form>
             </div>
         );

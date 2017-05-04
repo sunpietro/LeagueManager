@@ -1,0 +1,32 @@
+.component--default-layout {
+    display: grid;
+    grid-template-columns: 250px calc(100% - 250px - 1rem);
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+}
+
+.default-layout__sidebar {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    background: #002d6e;
+    color: #E8EAF6;
+}
+
+.default-layout__sidebar a {
+    color: #E8EAF6;
+}
+
+.default-layout__sidebar a:hover,
+.default-layout__sidebar a:focus {
+    color: #9EA8DB;
+}
+
+.default-layout__content {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.default-layout__footer {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+}

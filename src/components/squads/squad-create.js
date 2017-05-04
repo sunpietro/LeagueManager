@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Form from './squad-form';
 import Player from './squad-player';
-import Header from '../page-elements/header';
-import Nav from '../page-elements/nav';
+import DefaultLayout from '../layouts/default';
 
 class SquadCreate extends Component {
     constructor(props) {
@@ -31,14 +30,12 @@ class SquadCreate extends Component {
 
     render() {
         return (
-            <div className="component component--squad-create">
-                <Nav />
-                <Header subtitle="Create a new squad" />
+            <DefaultLayout subtitle="Create a new squad" isLoading={this.state.inProgress}>
                 <Form onAddPlayer={this.updatePlayersList.bind(this)} />
                 <div className="squad-create__players">
                     {this.state.players.map(this.renderPlayer.bind(this))}
                 </div>
-            </div>
+            </DefaultLayout>
         );
     }
 }

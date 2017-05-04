@@ -6,9 +6,9 @@ import Button from '../form-elements/form-button';
 import DateTime from 'react-datetime';
 import WPAPI from '../../tools/wpapi';
 import countries from '../../tools/countries';
-import moment from 'moment';
 import CountrySelect from 'react-country-select';
 
+import '../../css/external/pure-forms.css';
 import '../../css/components/forms/form-base.css';
 
 class PlayerForm extends Component {
@@ -170,7 +170,7 @@ class PlayerForm extends Component {
     }
 
     render() {
-        let componentClass = 'component component-form--player';
+        let componentClass = 'component component-form--player component--form';
         let errorNotification = null;
         const nameAttrs = {
             id: 'name',
@@ -212,7 +212,7 @@ class PlayerForm extends Component {
         const positionAttrs = {
             id: 'position',
             ref: 'position',
-            name: 'position',
+            name: 'Position',
             options: this.state.positions,
             required: true,
             emptyOptionLabel: 'Select a position'
@@ -226,8 +226,10 @@ class PlayerForm extends Component {
             closeOnSelect: true,
             inputProps: {
                 placeholder: 'Select a birthday date',
-                required: true
-            }
+                required: true,
+                className: 'form__field-input'
+            },
+            className: 'form__field'
         };
 
         if (this.state.hasError) {
@@ -238,19 +240,27 @@ class PlayerForm extends Component {
         return (
             <div className={componentClass}>
                 {errorNotification}
-                <form className="player-form__fields" key={this.state.key}>
+                <form className="player-form__fields pure-form pure-form-aligned" key={this.state.key}>
+                <fieldset>
                     <Input {...nameAttrs} />
                     <Textarea {...bioAttrs} />
                     <Input {...jerseyNoAttrs} />
                     <Input {...heightAttrs} />
                     <Input {...weightAttrs} />
-                    <CountrySelect {...nationalityAttrs} />
+                    <div className="pure-control-group">
+                        <label htmlFor={nationalityAttrs.ref}>Nationality</label>
+                        <CountrySelect {...nationalityAttrs} />
+                    </div>
                     <Choices {...positionAttrs} />
-                    <DateTime {...birthdayAttrs} />
+                    <div className="pure-control-group">
+                        <label htmlFor={birthdayAttrs.ref}>Birthday</label>
+                        <DateTime {...birthdayAttrs} />
+                    </div>
                     <div className="player-form__buttons">
                         <Button onClick={this.cancel.bind(this)} type="button" id="cancel" name="Cancel" />
                         <Button onClick={this.save.bind(this)} type="button" id="save" name="Save" />
                     </div>
+                    </fieldset>
                 </form>
             </div>
         );

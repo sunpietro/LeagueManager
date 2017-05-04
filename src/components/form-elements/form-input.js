@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import '../../css/components/form-elements/form-input.css';
-
 class FormInput extends Component {
     constructor(props) {
         super(props);
@@ -34,7 +32,7 @@ class FormInput extends Component {
     }
 
     render() {
-        let className = 'form-input';
+        let className = 'form-input form__field pure-control-group';
 
         if (this.state.hidden) {
             className += ' form-input--hidden';
@@ -50,9 +48,9 @@ class FormInput extends Component {
 
         return (
             <div className={className}>
-                <label className="form-input__label" htmlFor={this.props.id}>{this.props.name}</label>
+                <label className="form-input__label form__field-label" htmlFor={this.props.id}>{this.props.name}</label>
                 <input
-                    className="form-input__field"
+                    className="form-input__field form__field-input"
                     type={this.props.type}
                     name={this.props.id}
                     id={this.props.id}

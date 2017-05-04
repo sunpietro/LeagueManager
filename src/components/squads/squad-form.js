@@ -7,6 +7,9 @@ import Button from '../form-elements/form-button';
 import Players from './squad-form-players';
 import WPAPI from '../../tools/wpapi';
 
+import '../../css/external/pure-forms.css';
+import '../../css/components/forms/form-base.css';
+
 class SquadForm extends Component {
     constructor(props) {
         super(props);
@@ -149,16 +152,18 @@ class SquadForm extends Component {
         };
 
         return (
-            <div className="component component--squad-form">
-                <form className="squad-form__fields">
-                    <Competition {...competitionAttrs} />
-                    <Season {...seasonAttrs} />
-                    <Team {...teamAttrs} />
-                    <Players ref="players" onAddPlayer={this.addPlayer.bind(this)} />
-                    <div className="squad-form__buttons">
-                        <Button {...cancelBtnAttrs} />
-                        <Button {...saveBtnAttrs} />
-                    </div>
+            <div className="component component--squad-form component--form">
+                <form className="squad-form__fields pure-form pure-form-aligned">
+                    <fieldset>
+                        <Competition {...competitionAttrs} />
+                        <Season {...seasonAttrs} />
+                        <Team {...teamAttrs} />
+                        <Players ref="players" onAddPlayer={this.addPlayer.bind(this)} />
+                        <div className="squad-form__buttons">
+                            <Button {...cancelBtnAttrs} />
+                            <Button {...saveBtnAttrs} />
+                        </div>
+                    </fieldset>
                 </form>
             </div>
         );

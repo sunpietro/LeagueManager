@@ -1,0 +1,15 @@
+.component--panel {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #002d6e;
+    padding: 1rem;
+    color: #E8EAF6;
+    z-index: 100;
+}
+
+.component--panel.panel--is-visible {
+    display: block;
+}

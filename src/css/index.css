@@ -18,3 +18,8 @@ a:hover,
 a:focus {
     color: #283593;
 }
+
+.pure-button {
+    background: #3F51B5;
+    color: #E8EAF6;
+}

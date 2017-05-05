@@ -162,7 +162,7 @@ class ConfigForm extends Component {
                             value={defaultSeason}
                             selectedOption={defaultSeason}
                             emptyOptionLabel="Select a default season" />
-                        <div className="config-form__buttons">
+                        <div className="component--form__buttons">
                             <Button onClick={this.cancel.bind(this)} type="button" id="cancel" name="Cancel" />
                             <Button onClick={this.save.bind(this)} type="button" id="save" name="Save" />
                         </div>

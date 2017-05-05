@@ -71,8 +71,14 @@
     height: 2rem;
     line-height: 2rem;
     font-size: .75rem;
+    color: #1A237E;
 }
 
 .component--form .pure-form textarea {
     line-height: 1rem;
+}
+
+.component--form__buttons {
+    display: flex;
+    justify-content: space-between;
 }

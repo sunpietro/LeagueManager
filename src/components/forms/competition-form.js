@@ -96,7 +96,7 @@ class CompetitionForm extends Component {
                         name="Parent competition"
                         options={options}
                         emptyOptionLabel="Select a parent competition" />
-                    <div className="competition-form__buttons">
+                    <div className="component--form__buttons">
                         <Button onClick={this.cancel.bind(this)} type="button" id="cancel" name="Cancel" />
                         <Button onClick={this.save.bind(this)} type="button" id="save" name="Save" />
                     </div>

@@ -1,30 +1,48 @@
 import React, { Component } from 'react';
 import Header from '../page-elements/header';
 import Nav from '../page-elements/nav';
-import Profile from '../page-elements/profile';
+import NavToggle from '../page-elements/nav-toggle';
 import LoadingScreen from '../page-elements/loading-screen';
 
+import '../../css/external/pure-base.css';
 import '../../css/layouts/default.css';
 
 class DefaultLayout extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isCollapsed: false
+        };
+    }
+
     componentDidMount() {
         document.title = `League Manager - ${this.props.subtitle}`;
     }
 
+    toggleSidebar() {
+        this.setState({
+            isCollapsed: !this.state.isCollapsed
+        });
+    }
+
     render() {
+        const layoutCssClass = 'component component--default-layout';
+        const layoutSidebarCssStateClass = this.state.isCollapsed ? 'default-layout--has-sidebar-collapsed' : '';
+        const layoutCssStateClass = this.props.isLoading ?
+            `${layoutCssClass} component--is-loading ${layoutSidebarCssStateClass}` :
+            `${layoutCssClass} ${layoutSidebarCssStateClass}`;
+
         return (
-            <div className="component component--default-layout">
+            <div className={layoutCssStateClass}>
                 <div className="default-layout__sidebar">
-                    <Profile />
+                    <NavToggle onClick={this.toggleSidebar.bind(this)} />
                     <Nav />
                 </div>
                 <div className="default-layout__content">
                     <Header subtitle={this.props.subtitle} />
                     {this.props.children}
                     <LoadingScreen />
-                </div>
-                <div className="default-layout__footer">
-                    <p>Copyright &copy; {(new Date()).getFullYear()} Piotr Nalepa - LeagueManager</p>
                 </div>
             </div>
         );

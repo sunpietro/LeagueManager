@@ -19,61 +19,61 @@ class Nav extends Component {
             <ul className="component--nav">
                 <li className="nav__item">
                     <IndexLink to="/" activeClassName="nav__link--active" className="nav__link">
-                        <span className="nav__link-icon-wrapper"><HomeIcon className="nav__link-icon" /></span>
-                        <span className="nav__link-label">Dahsboard</span>
+                        <span className="nav__link-icon-wrapper" title="Dashboard"><HomeIcon className="nav__link-icon" /></span>
+                        <span className="nav__link-label">Dashboard</span>
                     </IndexLink>
                 </li>
                 <li className="nav__item">
                     <Link activeClassName="nav__link--active" to="/competitions" className="nav__link">
-                        <span className="nav__link-icon-wrapper"><CompetitionIcon className="nav__link-icon" /></span>
+                        <span className="nav__link-icon-wrapper" title="Competitions"><CompetitionIcon className="nav__link-icon" /></span>
                         <span className="nav__link-label">Competitions</span>
                     </Link>
                 </li>
                 <li className="nav__item">
                     <Link activeClassName="nav__link--active" to="/seasons" className="nav__link">
-                        <span className="nav__link-icon-wrapper"><SeasonsIcon className="nav__link-icon" /></span>
+                        <span className="nav__link-icon-wrapper" title="Seasons"><SeasonsIcon className="nav__link-icon" /></span>
                         <span className="nav__link-label">Seasons</span>
                     </Link>
                 </li>
                 <li className="nav__item">
                     <Link activeClassName="nav__link--active" to="/games" className="nav__link">
-                        <span className="nav__link-icon-wrapper"><ListIcon className="nav__link-icon" /></span>
+                        <span className="nav__link-icon-wrapper" title="Matches"><ListIcon className="nav__link-icon" /></span>
                         <span className="nav__link-label">Matches</span>
                     </Link>
                 </li>
                 <li className="nav__item">
                     <Link activeClassName="nav__link--active" to="/players" className="nav__link">
-                        <span className="nav__link-icon-wrapper"><PlayersIcon className="nav__link-icon" /></span>
+                        <span className="nav__link-icon-wrapper" title="Players"><PlayersIcon className="nav__link-icon" /></span>
                         <span className="nav__link-label">Players</span>
                     </Link>
                 </li>
                 <li className="nav__item">
                     <Link activeClassName="nav__link--active" to="/teams"  className="nav__link">
-                        <span className="nav__link-icon-wrapper"><TeamsIcon className="nav__link-icon" /></span>
+                        <span className="nav__link-icon-wrapper" title="Teams"><TeamsIcon className="nav__link-icon" /></span>
                         <span className="nav__link-label">Teams</span>
                     </Link>
                 </li>
                 <li className="nav__item">
                     <Link activeClassName="nav__link--active" to="/squads" className="nav__link">
-                        <span className="nav__link-icon-wrapper"><SquadsIcon className="nav__link-icon" /></span>
+                        <span className="nav__link-icon-wrapper" title="Squads"><SquadsIcon className="nav__link-icon" /></span>
                         <span className="nav__link-label">Squads</span>
                     </Link>
                 </li>
                 <li className="nav__item">
                     <Link activeClassName="nav__link--active" to="/positions" className="nav__link">
-                        <span className="nav__link-icon-wrapper"><PositionsIcon className="nav__link-icon" /></span>
+                        <span className="nav__link-icon-wrapper" title="Positions"><PositionsIcon className="nav__link-icon" /></span>
                         <span className="nav__link-label">Positions</span>
                     </Link>
                 </li>
                 <li className="nav__item">
                     <Link activeClassName="nav__link--active" to="/stats" className="nav__link">
-                        <span className="nav__link-icon-wrapper"><StatsIcon className="nav__link-icon" /></span>
+                        <span className="nav__link-icon-wrapper" title="Stats"><StatsIcon className="nav__link-icon" /></span>
                         <span className="nav__link-label">Stats</span>
                     </Link>
                 </li>
                 <li className="nav__item">
                     <Link activeClassName="nav__link--active" to="/config" className="nav__link">
-                        <span className="nav__link-icon-wrapper"><ConfigIcon className="nav__link-icon" /></span>
+                        <span className="nav__link-icon-wrapper" title="Config"><ConfigIcon className="nav__link-icon" /></span>
                         <span className="nav__link-label">Config</span>
                     </Link>
                 </li>

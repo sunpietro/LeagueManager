@@ -79,7 +79,7 @@ class PositionForm extends Component {
                     <fieldset>
                         <InputField {...nameAttrs} />
                         <Choices {...groupAttrs} />
-                        <div className="position-form__buttons">
+                        <div className="component--form__buttons">
                             <Button onClick={this.cancel.bind(this)} type="button" id="cancel" name="Cancel" />
                             <Button onClick={this.save.bind(this)} type="button" id="save" name="Save" />
                         </div>

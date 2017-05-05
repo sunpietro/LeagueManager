@@ -1,0 +1,25 @@
+.component--nav-toggle {
+    display: flex;
+    height: 3rem;
+    padding-bottom: 1rem;
+    align-items: center;
+}
+
+.nav-toggle__app-name {
+    letter-spacing: -.5px;
+    flex: 1 1 auto;
+    padding-left: 1rem;
+    font-size: 1.3rem;
+    font-weight: 400;
+    transform-origin: center left;
+    margin: 0;
+}
+
+.nav-toggle__btn-wrapper {
+    flex: 0 0 1rem;
+    padding: 1rem;
+}
+
+.nav-toggle__btn {
+    cursor: pointer;
+}

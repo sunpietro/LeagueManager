@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Table, Column, Cell } from 'fixed-data-table';
+import PlusIcon from 'react-icons/lib/fa/plus';
 
 import * as playerActionCreators from '../../actions/players';
 import DefaultLayout from '../layouts/default';
@@ -10,6 +11,7 @@ import Panel from '../page-elements/panel';
 import Form from './player-form';
 
 import '../../css/external/fixed-data-table.css';
+import '../../css/components/players/players-list.css';
 
 const PlayerIdCell = ({rowIndex, players, ...props}) => (<Cell {...props}>{players[rowIndex].id}</Cell>);
 const PlayerNameCell = ({rowIndex, players, ...props}) => (<Cell {...props}>{players[rowIndex].title.rendered}</Cell>);
@@ -84,8 +86,8 @@ class PlayersList extends Component {
         const isLoading = this.checkIsLoading();
 
         return (
-            <DefaultLayout subtitle="Players" isLoading={isLoading}>
-                <Button onClick={this.showForm.bind(this)} type="button" id="show-form" name="Add a player" className="players__btn--add" />
+            <DefaultLayout subtitle="Players" isLoading={isLoading} className="players">
+                <Button onClick={this.showForm.bind(this)} type="button" id="show-form" name="Add a player" className="players__btn--add" icon={<PlusIcon />} />
                 <Panel isVisible={this.state.isPanelVisible}>
                     <Form
                         {...this.props}

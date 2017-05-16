@@ -103,7 +103,7 @@ class TeamForm extends Component {
                         <Input {...nameAttrs} />
                         <Input {...abbrAttrs} />
                         <Input {...urlAttrs} />
-                        <div className="team-form__buttons">
+                        <div className="component--form__buttons">
                             <Button onClick={this.cancel.bind(this)} type="button" id="cancel" name="Cancel" />
                             <Button onClick={this.save.bind(this)} type="button" id="save" name="Save" />
                         </div>

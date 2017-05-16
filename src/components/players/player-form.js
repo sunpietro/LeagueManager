@@ -9,6 +9,7 @@ import countries from '../../tools/countries';
 import CountrySelect from 'react-country-select';
 
 import '../../css/external/pure-forms.css';
+import '../../css/external/pure-buttons.css';
 import '../../css/components/forms/form-base.css';
 
 class PlayerForm extends Component {
@@ -256,7 +257,7 @@ class PlayerForm extends Component {
                         <label htmlFor={birthdayAttrs.ref}>Birthday</label>
                         <DateTime {...birthdayAttrs} />
                     </div>
-                    <div className="player-form__buttons">
+                    <div className="component--form__buttons">
                         <Button onClick={this.cancel.bind(this)} type="button" id="cancel" name="Cancel" />
                         <Button onClick={this.save.bind(this)} type="button" id="save" name="Save" />
                     </div>

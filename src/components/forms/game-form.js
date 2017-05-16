@@ -315,7 +315,7 @@ class GameForm extends Component {
                             <label htmlFor={gameDateAttrs.ref}>Game date</label>
                             <DateTime {...gameDateAttrs} />
                         </div>
-                        <div className="game-form__buttons">
+                        <div className="component--form__buttons">
                             <Button {...cancelBtnAttrs} />
                             <Button {...saveBtnAttrs} />
                         </div>

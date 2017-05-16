@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as actionCreators from '../../actions/players';
 import DefaultLayout from '../layouts/default';
 import GameForm from '../forms/game-form';
 import GameListItem from './game-list-item';
@@ -72,4 +76,13 @@ class GamesList extends Component {
     }
 }
 
-export default GamesList;
+const mapDispatchToProps = (dispatch) => bindActionCreators(actionCreators, dispatch);
+const mapStateToProps = (state) => {
+    return {
+        games: state.games,
+        seasons: state.seasons,
+        competitions: state.competitions,
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(GamesList);

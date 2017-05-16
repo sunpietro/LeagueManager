@@ -1,0 +1,3 @@
+export const GET_TEAMS_FETCH = 'GET_TEAMS_FETCH';
+export const GET_TEAMS_ERROR = 'GET_TEAMS_ERROR';
+export const GET_TEAMS_SUCCESS = 'GET_TEAMS_SUCCESS';

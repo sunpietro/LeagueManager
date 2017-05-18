@@ -11,8 +11,11 @@ function rest_api_player_meta() {
 
 function get_player_meta($object) {
     $postId = $object['id'];
+    $postMeta = get_post_meta($postId);
 
-    return get_post_meta($postId);
+    $postMeta['image_url'] = wp_get_attachment_url($object['featured_media']);
+
+    return $postMeta;
 }
 
 function update_player_meta($meta, $post) {

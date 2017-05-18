@@ -4,3 +4,13 @@
     right: 1rem;
     z-index: 2;
 }
+
+.players__list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.players__list .component--players-list-item {
+    flex: 0 0 200px;
+    margin: 1rem;
+}

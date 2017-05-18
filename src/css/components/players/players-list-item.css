@@ -1,0 +1,49 @@
+.player-list-item,
+.player-list-item * {
+    box-sizing: border-box;
+}
+
+.player-list-item {
+    box-shadow: 0 0 10px -4px rgba(0,0,0,.5);
+    padding: 1rem;
+    position: relative;
+}
+
+.player-list-item__name {
+    color: #696969;
+    text-transform: uppercase;
+    font-size: .75rem;
+    font-weight: 400;
+}
+
+.player-list-item__number {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    background: #fff;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid #4c4c4c;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.player-list-item__description {
+    font-size: .75rem;
+}
+
+.player-list-item__image-wrapper {
+    overflow: hidden;
+}
+
+.player-list-item__image {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    clip-path: circle(30% at 50% 30%);
+}

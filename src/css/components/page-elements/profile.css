@@ -1,5 +1,6 @@
 .component--profile {
     display: flex;
+    width: 256px;
 }
 
 .profile__app-logo-wrapper {

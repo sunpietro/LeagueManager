@@ -6,7 +6,7 @@
     position: relative;
 }
 
-.component--is-loading:not(.component--game-list-item) .component--loading-screen {
+.component--is-loading:not(.component--game-list-item):not(.component--dashboard-block) .component--loading-screen {
     display: block;
     position: fixed;
     z-index: 1000;
@@ -24,7 +24,8 @@
     transform: translate(-50%, -50%);
 }
 
-.component--game-list-item.component--is-loading .component--loading-screen {
+.component--game-list-item.component--is-loading .component--loading-screen,
+.component--dashboard-block.component--is-loading .component--loading-screen {
     display: block;
     position: absolute;
     z-index: 1000;
@@ -41,3 +42,4 @@
     width: 1rem;
     height: auto;
 }
+

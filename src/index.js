@@ -4,7 +4,7 @@ import { Router, Route } from 'react-router';
 import { Provider } from 'react-redux';
 
 import store, { history } from './store';
-import Home from './components/home';
+import Dashboard from './components/dashboard/dashboard';
 import CompetitionsList from './components/competitions/competitions-list';
 import Competition from './components/competitions/competition';
 import Seasons from './components/seasons/seasons-list';
@@ -24,7 +24,7 @@ import './css/index.css';
 ReactDOM.render((
     <Provider store={store}>
         <Router history={history}>
-            <Route path="/" component={Home} />
+            <Route path="/" component={Dashboard} />
             <Route path="/competitions" component={CompetitionsList} />
             <Route path="/competition/:parentId/:competitionId" component={Competition} />
             <Route path="/competition/:parentId/:competitionId/season/:seasonId" component={Competition} />

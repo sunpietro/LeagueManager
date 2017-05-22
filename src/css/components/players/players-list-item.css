@@ -18,9 +18,8 @@
 
 .player-list-item__number {
     position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(50%, -50%);
+    top: 1rem;
+    right: 1rem;
     background: #fff;
     border-radius: 50%;
     width: 2rem;
@@ -42,7 +41,7 @@
 
 .player-list-item__image {
     display: block;
-    max-width: 100%;
+    max-width: 50%;
     width: 100%;
     height: auto;
     clip-path: circle(30% at 50% 30%);

@@ -66,15 +66,16 @@ class PlayersList extends Component {
     }
 
     renderPlayerItem(teams, positions, player) {
+        const team = teams.find(item => item.id === parseInt(player.player_meta.sp_current_team, 10));
         const position = positions.find(position => {
             let playerPositions = (player.positions && player.positions.length) ?
                 player.positions :
                 (player.player_meta.sp_position ? player.player_meta.sp_position : []);
 
-            return position.id === playerPositions[0];
+            return position.id === parseInt(playerPositions[0], 10);
         });
 
-        return <Player key={player.id} player={player} position={position} team={{}}/>
+        return <Player key={player.id} player={player} position={position} team={team}/>
     }
 
     renderTable() {

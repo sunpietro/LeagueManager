@@ -6,16 +6,20 @@ export const GET_PLAYERS_FETCH = 'GET_PLAYERS_FETCH';
 export const GET_PLAYERS_ERROR = 'GET_PLAYERS_ERROR';
 export const GET_PLAYERS_SUCCESS = 'GET_PLAYERS_SUCCESS';
 
-export const fetchPlayers = (limit = 100, page = 1) => (dispatch, getState) => {
+export const fetchPlayers = ({limit = 100, page = 1, order = 'asc', orderby = 'id'} = {}) => (dispatch, getState) => {
     dispatch({type: GET_PLAYERS_FETCH});
     dispatch({type: GET_TEAMS_FETCH});
     dispatch({type: GET_POSITIONS_FETCH});
+
+    console.log(limit, page, order, orderby)
 
     return Promise.all([
         WPAPI
             .player()
             .perPage(limit)
-            .page(page),
+            .page(page)
+            .order(order)
+            .orderby(orderby),
         WPAPI
             .position()
             .perPage(limit),

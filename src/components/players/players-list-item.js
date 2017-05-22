@@ -10,8 +10,6 @@ class PlayerListItem extends Component {
             '/img/user-placeholder.png' :
             player.player_meta.image_url;
 
-        console.log('PlayerListItem:render', player);
-
         return (
             <div className="component--players-list-item player-list-item">
                 <div className="player-list-item__image-wrapper">
@@ -22,19 +20,30 @@ class PlayerListItem extends Component {
                 </div>
                 <div className="player-list-item__info">
                     <h3 className="player-list-item__name">{player.title.rendered}</h3>
-                    <div className="player-list-item__number">{player.number}</div>
-                    <details
-                        className="player-list-item__description"
-                        dangerouslySetInnerHTML={{ __html: player.content.rendered}}></details>
+                    <div className="player-list-item__number">21</div>
+                    <div className="player-list-item__position">player.position</div>
+                    <div className="player-list-item__team">team.name</div>
+                    <div className="player-list-item__description">player.description</div>
                 </div>
             </div>
         );
     }
 }
 
+// dangerouslySetInnerHTML={{ __html: player.content.rendered}}
+
 PlayerListItem.PropTypes = {
-    player: React.PropTypes.object.isRequired,
-    team: React.PropTypes.object.isRequired,
+    player: React.PropTypes.shape({
+        title: React.PropTypes.shape({
+            rendered: React.PropTypes.string.isRequired
+        }),
+        description: React.PropTypes.string.isRequired
+    }),
+    team: React.PropTypes.shape({
+        title: React.PropTypes.shape({
+            rendered: React.PropTypes.string.isRequired
+        })
+    }),
     position: React.PropTypes.object.isRequired
 };
 

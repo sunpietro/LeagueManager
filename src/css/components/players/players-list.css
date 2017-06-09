@@ -6,11 +6,17 @@
 }
 
 .players__list {
-    display: flex;
-    flex-wrap: wrap;
+    /* display: flex;
+    flex-wrap: wrap; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 .players__list .component--players-list-item {
-    flex: 0 0 200px;
-    margin: 1rem;
+    /* flex: 0 0 200px;
+    margin: 1rem; */
+}
+
+.players .player-form__fields {
+    max-width: initial;
 }

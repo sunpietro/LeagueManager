@@ -10,6 +10,7 @@ import Button from '../form-elements/form-button';
 import Panel from '../page-elements/panel';
 import Form from './player-form';
 import Player from './players-list-item';
+import { spawnNotification } from '../notifications/notification';
 
 import '../../css/external/fixed-data-table.css';
 import '../../css/components/players/players-list.css';
@@ -43,6 +44,15 @@ class PlayersList extends Component {
 
     componentWillMount() {
         this.getPlayersList();
+    }
+
+    handleFormSavedState() {
+        console.log('handleFormSavedState');
+
+        spawnNotification({
+            title: 'The player data has been saved',
+            body: 'Everything went well'
+        });
     }
 
     getPlayersList() {
@@ -137,7 +147,7 @@ class PlayersList extends Component {
                     <Form
                         {...this.props}
                         className="players__form"
-                        onSave={this.getPlayersList.bind(this)}
+                        onSave={this.handleFormSavedState.bind(this)}
                         onError={this.handleError.bind(this)} />
                 </Panel>
                 <div className="players__list">

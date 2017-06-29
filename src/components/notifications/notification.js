@@ -1,7 +1,5 @@
 const showNotification = ({title = '', body = '', icon = ''} = {}) => {
-    console.log('showNotification', arguments);
-
-    const notification = new Notification(title, {body, icon});
+    new Notification(title, {body, icon});
 }
 
 export const spawnNotification = (...args) => {

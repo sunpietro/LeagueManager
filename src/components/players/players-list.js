@@ -47,8 +47,6 @@ class PlayersList extends Component {
     }
 
     handleFormSavedState() {
-        console.log('handleFormSavedState');
-
         spawnNotification({
             title: 'The player data has been saved',
             body: 'Everything went well'

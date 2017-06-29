@@ -5,7 +5,7 @@ import '../../css/components/players/players-list-item.css';
 
 class PlayerListItem extends Component {
     render() {
-        const {player, team, position} = this.props;
+        const {player} = this.props;
         const imageUrl = !player.player_meta.image_url ?
             '/img/user-placeholder.png' :
             player.player_meta.image_url;

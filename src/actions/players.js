@@ -11,8 +11,6 @@ export const fetchPlayers = ({limit = 100, page = 1, order = 'asc', orderby = 'i
     dispatch({type: GET_TEAMS_FETCH});
     dispatch({type: GET_POSITIONS_FETCH});
 
-    console.log(limit, page, order, orderby)
-
     return Promise.all([
         WPAPI
             .player()
@@ -22,10 +20,10 @@ export const fetchPlayers = ({limit = 100, page = 1, order = 'asc', orderby = 'i
             .orderby(orderby),
         WPAPI
             .position()
-            .perPage(limit),
+            .perPage(100),
         WPAPI
             .team()
-            .perPage(limit)
+            .perPage(100)
     ])
     .then(([players, positions, teams]) => {
         dispatch({

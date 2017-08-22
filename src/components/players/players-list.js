@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Table, Column, Cell } from 'fixed-data-table';
 import PlusIcon from 'react-icons/lib/fa/plus';
 
 import * as playerActionCreators from '../../actions/players';
@@ -14,24 +13,6 @@ import { spawnNotification } from '../notifications/notification';
 
 import '../../css/external/fixed-data-table.css';
 import '../../css/components/players/players-list.css';
-
-const PlayerIdCell = ({rowIndex, players, ...props}) => (<Cell {...props}>{players[rowIndex].id}</Cell>);
-const PlayerNameCell = ({rowIndex, players, ...props}) => (<Cell {...props}>{players[rowIndex].title.rendered}</Cell>);
-const PlayerPositionCell = ({rowIndex, players, positions, ...props}) => {
-    const player = players[rowIndex];
-    const playerPositions = player.position.length ?
-        player.position :
-        (player.player_meta.sp_position ? player.player_meta.sp_position : []);
-    let positionName = '';
-
-    if (playerPositions.length) {
-        const playerPosition = parseInt(playerPositions[0], 10);
-
-        positionName = positions.find(pos => pos.id === playerPosition).name;
-    }
-
-    return (<Cell {...props}>{positionName}</Cell>);
-};
 
 class PlayersList extends Component {
     constructor(props) {
@@ -86,42 +67,6 @@ class PlayersList extends Component {
         return <Player key={player.id} player={player} position={position} team={team}/>
     }
 
-    renderTable() {
-        const players = this.props.players.items;
-        const positions = this.props.positions.items;
-        const fullWidth = this.state.dimensions.width;
-        const fractionDenominator = 4;
-        const height = 50;
-        const idWidth = 50;
-        const baseWidth = fullWidth - 50;
-        const nameWidth = Math.ceil((baseWidth * 3) / fractionDenominator);
-        const positionWidth = Math.floor((baseWidth * 1 - 50) / fractionDenominator);
-
-        console.log('renderTable', players);
-
-        return (
-            <Table
-                width={fullWidth}
-                maxHeight={400}
-                rowHeight={height}
-                rowsCount={players.length}
-                headerHeight={height} >
-                <Column
-                    width={idWidth}
-                    header={<Cell>ID</Cell>}
-                    cell={<PlayerIdCell players={players} />} />
-                <Column
-                    width={nameWidth}
-                    header={<Cell>Name</Cell>}
-                    cell={<PlayerNameCell players={players} />} />
-                <Column
-                    width={positionWidth}
-                    header={<Cell>Position</Cell>}
-                    cell={<PlayerPositionCell players={players} positions={positions}/>} />
-            </Table>
-        );
-    }
-
     setComponentWidth(dimensions) {
         this.setState({dimensions});
     }
@@ -155,6 +100,13 @@ class PlayersList extends Component {
         );
     }
 }
+
+PlayersList.propTypes = {
+    players: React.PropTypes.object,
+    positions: React.PropTypes.object,
+    teams: React.PropTypes.object,
+    fetchPlayers: React.PropTypes.func.isRequired
+};
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(Object.assign({}, playerActionCreators), dispatch);
 const mapStateToProps = (state) => {

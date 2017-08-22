@@ -2,4 +2,5 @@
     "extends": ["eslint:recommended", "plugin:react/recommended"],
     "indent": ["error", 4],
     "strict": 0,
+    "parser": "babel-eslint"
 }

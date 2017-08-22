@@ -1,10 +1,13 @@
 <?php
 
 function rest_api_player_meta() {
-    register_rest_field('sp_player', 'player_meta', array(
+    register_rest_field(
+        'sp_player',
+        'player_meta',
+        array(
             'get_callback' => 'get_player_meta',
-           'update_callback' => 'update_player_meta',
-           'schema' => null,
+            'update_callback' => 'update_player_meta',
+            'schema' => null,
         )
     );
 }

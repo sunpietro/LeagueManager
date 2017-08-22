@@ -23,4 +23,5 @@ a:focus {
 .pure-button {
     background: #3F51B5;
     color: #E8EAF6;
+    cursor: pointer;
 }

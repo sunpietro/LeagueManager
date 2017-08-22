@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 import '../../css/components/players/players-list-item.css';
 
 class PlayerListItem extends Component {
@@ -20,10 +19,10 @@ class PlayerListItem extends Component {
                 </div>
                 <div className="player-list-item__info">
                     <h3 className="player-list-item__name">{player.title.rendered}</h3>
-                    <div className="player-list-item__number">21</div>
-                    <div className="player-list-item__position">player.position</div>
-                    <div className="player-list-item__team">team.name</div>
-                    <div className="player-list-item__description">player.description</div>
+                    <div className="player-list-item__number">{player.number}</div>
+                    <div className="player-list-item__position">{player.position}</div>
+                    <div className="player-list-item__team">{player.current_teams}</div>
+                    <div className="player-list-item__description" dangerouslySetInnerHTML={{ __html: player.content.rendered}}></div>
                 </div>
             </div>
         );
